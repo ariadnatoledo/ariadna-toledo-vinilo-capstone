@@ -63,7 +63,9 @@ Vinyl collectors often struggle to discover like-minded individuals, showcase th
     - dotenv
     - express
     - mysql2
-    - uuid
+    - uuid 
+    - bcrypt
+    -jsonwebtoken
 
 
 ### APIs
@@ -332,19 +334,18 @@ Parameters:
 - Fetch all messages in a specific conversation.
 
 Parameters:
-- id (integer): The unique identifier of the conversation.
-- token (string): JWT token for authenticating the logged-in user.
+- id (integer): The ID of the conversation
 
 ```
 [
   {
-    "id": 1,
-    "sender": "vinylfanatic",
-    "receiver": "recordlover",
+    "messageId": 1,
+    "senderId": 101,
+    "receiverId": 102,
     "content": "Hey, are you interested in trading this vinyl?",
-    "timestamp": "2024-11-18T10:00:00Z"
-  },
-  ...
+    "timestamp": "2024-11-18T10:00:00Z",
+    "readStatus": false
+  }
 ]
 ```
 
@@ -358,8 +359,8 @@ Parameters:
 
 ```
 {
-  "receiverId": 2,
-  "content": "Let’s trade records!"
+  "success": true,
+  "message": "Message sent successfully"
 }
 ```
 
@@ -372,6 +373,25 @@ Response:
   "message": "Message sent successfully"
 }
 ```
+
+**PUT /username/messages/:id/read**
+
+- Mark all messages in a conversation as read
+
+Parameters:
+- conversationId (integer): The ID of the conversation
+
+Response:
+- 
+
+```
+{
+  "success": true,
+  "message": "Messages marked as read"
+}
+
+```
+
 
 ### Auth
 

@@ -1,0 +1,34 @@
+.header-nav {
+    background: #000;
+    color: #fff;
+    padding: 1rem;
+    &__wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__title {
+      margin: 0;
+      font-weight: normal;
+    }
+    &__nav {
+      display: flex;
+      justify-content: center;
+    }
+    &__link {
+      padding: 0.625rem;
+      background: #393939;
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      &.active {
+        background: #81246a;
+      }
+      &:hover {
+        background: #b92e96;
+      }
+    }
+  }
