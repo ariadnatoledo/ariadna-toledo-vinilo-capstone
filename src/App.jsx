@@ -74,7 +74,7 @@ function App() {
     localStorage.removeItem("token");
     setLoggedIn(false);
     setUser({});
-    navigate("/login"); // Redirect to login page
+    navigate("/login"); 
   };
 
   return (

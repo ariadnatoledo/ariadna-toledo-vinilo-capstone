@@ -31,12 +31,13 @@ function ProfilePage({ user }) {
       {user.userId && (
         <>
           <h2 className="profile-page__title">Profile</h2>
-          <h3 className="profile-page__username">Welcome {user.userName}</h3>
-          <img className="avatar" src={user.avatar} alt={user.userName} />
-          <h3 className="profile-page__username">{user.userName}'s Posts</h3>
+          <h3 className="profile-page__username">Welcome {user.username}</h3>
+          <img className="avatar" src={`http://localhost:3306${user.avatar}`} alt={user.userName} />
+          <h3 className="profile-page__username">{user.username}'s Posts</h3>
           <ul className="post-list">
             {posts.map((post) => (
               <li className="post-list__item" key={post.id}>
+                <h3 className="profile-page__bio">{user.bio}</h3>
                 <h4 className="post-list__title">{post.title}</h4>
                 <p className="post-list__body">{post.body}</p>
               </li>
