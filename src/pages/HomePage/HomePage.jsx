@@ -1,4 +1,5 @@
 import "./HomePage.scss";
+import VinylOfTheWeek from "../../components/VinylOfTheWeek/VinylOfTheWeek";
 
 function HomePage({ user }) {
   return (
@@ -16,6 +17,10 @@ function HomePage({ user }) {
           )}
         </h3>
       )}
+      <section className="vinyl-of-the-week">
+        <h3>Vinyl of the Week</h3>
+        <VinylOfTheWeek />
+      </section>
     </div>
   );
 }
