@@ -2,21 +2,13 @@ import "./HomePage.scss";
 import VinylOfTheWeek from "../../components/VinylOfTheWeek/VinylOfTheWeek";
 
 function HomePage({ user }) {
+  console.log(user);
   return (
     <div>
       <h2>Home</h2>
-      {user.userName && (
+      {user.username && (
         <>
-          <h3 className="welcome-message">
-            Welcome {user.userName}
-            {user.avatar && (
-              <img
-                className="avatar avatar--homepage"
-                src={user.avatar}
-                alt={user.userName}
-              />
-            )}
-          </h3>
+          <h3 className="welcome-message">Welcome {user.username}</h3>
           <section className="vinyl-of-the-week">
             <h3>Vinyl of the Week</h3>
             <VinylOfTheWeek />

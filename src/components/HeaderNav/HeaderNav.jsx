@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
+import viniloIcon from "../../assets/images/vinilo-2.jpeg";
 import "./HeaderNav.scss";
 
 function HeaderNav({ loggedIn, handleLogout }) {
   return (
     <header className="header-nav">
-      <h1>Vinilo</h1>
-      <nav>
+      <div className="header-nav__logo">
+      <Link to="/">
+        <img src={viniloIcon} alt="Vinilo Logo" className="header-nav__icon" />
+        </Link>
+      </div>
+      <nav className="header-nav__links">
         {loggedIn ? (
           <>
             <Link to="/about">About</Link>
@@ -22,3 +27,5 @@ function HeaderNav({ loggedIn, handleLogout }) {
 }
 
 export default HeaderNav;
+
+

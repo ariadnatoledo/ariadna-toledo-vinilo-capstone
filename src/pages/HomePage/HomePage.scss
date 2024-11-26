@@ -1,17 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/typography" as *;
+
 .welcome-message {
     display: inline-flex;
     align-items: center;
     text-transform: capitalize;
   }
   
-  .avatar {
-    max-width: 300px;
-    &--homepage {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin: 10px;
-    }
-  }
+  // .avatar {
+  //   max-width: 300px;
+  //   &--homepage {
+  //     width: 80px;
+  //     height: 80px;
+  //     object-fit: cover;
+  //     border-radius: 50%;
+  //     margin: 10px;
+  //   }
+  // }
   

@@ -1,34 +1,93 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/typography" as *;
+
 .header-nav {
-    background: #000;
-    color: #fff;
-    padding: 1rem;
-    &__wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+
+    .header-nav__icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
     }
-    &__title {
-      margin: 0;
-      font-weight: normal;
-    }
-    &__nav {
-      display: flex;
-      justify-content: center;
-    }
-    &__link {
-      padding: 0.625rem;
-      background: #393939;
-      color: #fff;
+  }
+
+  &__links {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+
+    a {
       text-decoration: none;
-      border: none;
-      cursor: pointer;
-      &.active {
-        background: #81246a;
-      }
+      color: #333;
+      font-weight: bold;
+
       &:hover {
-        background: #b92e96;
+        color: #0073e6;
+      }
+    }
+
+    button {
+      background-color: #0073e6;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #005bb5;
       }
     }
   }
+}
+
+
+
+
+// .header-nav {
+//   background: linear-gradient(135deg, $primary-color, darken($primary-color, 15%));
+//   color: $secondary-color;    color: #fff;
+//     padding: 1rem;
+//     &__wrapper {
+//       max-width: 1200px;
+//       margin: 0 auto;
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//     }
+//     &__title {
+//       margin: 0;
+//       font-weight: normal;
+//     }
+//     &__nav {
+//       display: flex;
+//       justify-content: center;
+//     }
+//     &__link {
+//       padding: 0.625rem;
+//       background: #393939;
+//       color: #fff;
+//       text-decoration: none;
+//       border: none;
+//       cursor: pointer;
+//       &.active {
+//         background: #81246a;
+//       }
+//       &:hover {
+//         background: #b92e96;
+//       }
+//     }
+//   }

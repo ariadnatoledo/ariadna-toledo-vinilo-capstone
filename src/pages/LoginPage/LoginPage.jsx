@@ -1,5 +1,6 @@
 import { useState } from "react";
-// import "./LoginPage.scss";
+// import { loginIcon } from "../../assets/icons/login.png";
+import "./LoginPage.scss";
 
 function LoginPage({ handleLogin, error }) {
   const [email, setEmail] = useState("");
@@ -12,7 +13,6 @@ function LoginPage({ handleLogin, error }) {
 
   return (
     <div className="login-page">
-      <h3>Sign In</h3>
       <form className="form" onSubmit={handleSubmit}>
         <input
           className="form__input"
