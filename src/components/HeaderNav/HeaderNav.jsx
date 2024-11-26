@@ -1,26 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./HeaderNav.scss";
 
 function HeaderNav({ loggedIn, handleLogout }) {
   return (
     <header className="header-nav">
-      <div className="header-nav__wrapper">
-        <h1 className="header-nav__title">Vinilo</h1>
-        {loggedIn && (
-          <nav className="header-nav__nav">
-            <NavLink className="header-nav__link" to="/">
-              Home
-            </NavLink>
-
-            <NavLink className="header-nav__link" to="/profile">
-              Profile
-            </NavLink>
-            <button className="header-nav__link" onClick={handleLogout}>
-              Logout
-            </button>
-          </nav>
+      <h1>Vinilo</h1>
+      <nav>
+        {loggedIn ? (
+          <>
+            <Link to="/about">About</Link>
+            <Link to="/shows">Shows</Link>
+            <Link to="/profile">Profile</Link>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <Link to="/login">Login</Link>
         )}
-      </div>
+      </nav>
     </header>
   );
 }

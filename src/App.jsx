@@ -4,6 +4,8 @@ import HeaderNav from "./components/HeaderNav/HeaderNav";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import LoginPage from "./pages/LoginPage/LoginPage"; 
+import AboutPage from "./pages/AboutPage/AboutPage";
+import ShowsPage from "./pages/ShowsPage/ShowsPage";
 import axios from "axios";
 import "./App.scss";
 
@@ -86,8 +88,9 @@ function App() {
         <Route path="/profile" element={<ProfilePage user={user} />} />
         <Route
           path="/login"
-          element={<LoginPage handleLogin={handleLogin} error={error} />}
-        />
+          element={<LoginPage handleLogin={handleLogin} error={error} />}/>
+           <Route path="/about" element={<AboutPage />} /> 
+           <Route path="/shows" element={<ShowsPage />} /> 
       </Routes>
     </div>
   );
