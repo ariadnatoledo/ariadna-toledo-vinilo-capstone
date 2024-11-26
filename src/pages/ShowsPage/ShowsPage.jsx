@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import "./ShowsPage.scss";
+import "./ShowsPage.scss";
 
 const ShowsPage = () => {
   const [shows, setShows] = useState([]);

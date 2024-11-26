@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import LoginPage from "./pages/LoginPage/LoginPage"; 
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShowsPage from "./pages/ShowsPage/ShowsPage";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import axios from "axios";
 import "./App.scss";
 
@@ -86,6 +87,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
+        <Route path="/profile/:username/messages" element={<MessagesPage user={user} />} />
         <Route
           path="/login"
           element={<LoginPage handleLogin={handleLogin} error={error} />}/>
