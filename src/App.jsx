@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-ro
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShowsPage from "./pages/ShowsPage/ShowsPage";
@@ -87,6 +88,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
+        <Route
+          path="/profile/:username/messages"
+          element={<MessagesPage user={user} />}
+        />
         <Route
           path="/login"
           element={<LoginPage handleLogin={handleLogin} error={error} />}
