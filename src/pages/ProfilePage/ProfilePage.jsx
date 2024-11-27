@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FileUploader from "../../components/FileUploader/FileUploader"; 
-import PostActions from "../../components/PostActions/PostActions";
 import "./ProfilePage.scss";
 
 function ProfilePage({ user }) {
@@ -115,7 +114,10 @@ function ProfilePage({ user }) {
           <h3 className="profile-page__posts-title">{user.username}'s Posts</h3>
           <ul className="profile-page__posts">
             {posts.map((post) => (
-              <li key={post.postId} className="profile-page__post-item">
+              <li key={post.postId} className="profile-page__post-item"
+              onClick={() => navigate(`/post/${post.postId}`)} 
+
+              >
                 <img
                   className="profile-page__post-image"
                   src={`http://localhost:3306${post.image}`}
@@ -125,12 +127,6 @@ function ProfilePage({ user }) {
                 <p className="profile-page__post-date">
                   {new Date(post.createdAt).toLocaleString()}
                 </p>
-                <PostActions
-                  postId={post.postId}
-                  currentContent={post.content}
-                  onUpdate={handlePostUpdate}
-                  onDelete={handlePostDelete}
-                />
               </li>
             ))}
           </ul>

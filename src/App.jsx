@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShowsPage from "./pages/ShowsPage/ShowsPage";
 import Footer from "./components/Footer/Footer";
+import PostDetails from "./components/PostDetails/PostDetails";
 import axios from "axios";
 import "./App.scss";
 
@@ -88,6 +89,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
+        <Route path="/post/:id" element={<PostDetails details={user} />} />
         <Route
           path="/profile/:username/messages"
           element={<MessagesPage user={user} />}
