@@ -57,7 +57,8 @@ function ProfilePage({ user }) {
           postId: response.data.postId,
           userId: user.userId,
           content,
-          image: `/assets/${response.data.image}`,
+          image: response.data.image,
+          // image: `/assets/${response.data.image}`,
           createdAt: new Date().toISOString(),
         },
       ]);
