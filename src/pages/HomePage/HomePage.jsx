@@ -11,7 +11,7 @@ function HomePage({ user }) {
           {user.avatar && (
             <img
               className="avatar avatar--homepage"
-              src={user.avatar}
+              src={`http://localhost:3306${user.avatar}`}
               alt={user.username}
             />
           )}

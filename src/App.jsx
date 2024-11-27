@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import LoginPage from "./pages/LoginPage/LoginPage"; 
+import LoginPage from "./pages/LoginPage/LoginPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ShowsPage from "./pages/ShowsPage/ShowsPage";
-import MessagesPage from "./pages/MessagesPage/MessagesPage";
+import Footer from "./components/Footer/Footer";
 import axios from "axios";
 import "./App.scss";
 
@@ -16,6 +16,7 @@ function App() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation(); 
 
   /*
    * Component Mount, if JWT token is set the user is still considered logged in
@@ -27,17 +28,17 @@ function App() {
       try {
         const response = await axios.get("http://localhost:3306/user", {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
         });
         setLoggedIn(true);
-        setUser(response.data); 
+        setUser(response.data);
       } catch (err) {
         console.error(err.response?.data?.message || "Error getting user data");
         setError("Error getting user data");
         localStorage.removeItem("token");
-        setLoggedIn(false); 
-        navigate("/login"); 
+        setLoggedIn(false);
+        navigate("/login");
       }
     };
 
@@ -55,9 +56,9 @@ function App() {
         email,
         password,
       });
-  
+
       const { token, user } = response.data;
-      localStorage.setItem("token", token); 
+      localStorage.setItem("token", token);
       setLoggedIn(true);
       setUser(user);
       setError("");
@@ -68,8 +69,6 @@ function App() {
     }
   };
 
-
-
   /*
    * Logout of application, clears localStorage JWT token and sets state to logged out
    */
@@ -77,7 +76,7 @@ function App() {
     localStorage.removeItem("token");
     setLoggedIn(false);
     setUser({});
-    navigate("/login"); 
+    navigate("/login");
   };
 
   return (
@@ -87,13 +86,15 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
-        <Route path="/profile/:username/messages" element={<MessagesPage user={user} />} />
         <Route
           path="/login"
-          element={<LoginPage handleLogin={handleLogin} error={error} />}/>
-           <Route path="/about" element={<AboutPage />} /> 
-           <Route path="/shows" element={<ShowsPage />} /> 
+          element={<LoginPage handleLogin={handleLogin} error={error} />}
+        />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/shows" element={<ShowsPage />} />
       </Routes>
+
+      {location.pathname !== "/login" && <Footer />}
     </div>
   );
 }
