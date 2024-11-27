@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FileUploader from "../../components/FileUploader/FileUploader"; 
+import PostActions from "../../components/PostActions/PostActions";
 import "./ProfilePage.scss";
 
 function ProfilePage({ user }) {
@@ -58,7 +59,6 @@ function ProfilePage({ user }) {
           userId: user.userId,
           content,
           image: response.data.image,
-          // image: `/assets/${response.data.image}`,
           createdAt: new Date().toISOString(),
         },
       ]);
@@ -68,6 +68,18 @@ function ProfilePage({ user }) {
       console.error(err.response?.data?.message || "Error creating post");
       alert("Failed to create post");
     }
+  };
+
+  const handlePostUpdate = (postId, updatedContent) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.postId === postId ? { ...post, content: updatedContent } : post
+      )
+    );
+  };
+
+  const handlePostDelete = (postId) => {
+    setPosts((prevPosts) => prevPosts.filter((post) => post.postId !== postId));
   };
 
   return (
@@ -113,6 +125,12 @@ function ProfilePage({ user }) {
                 <p className="profile-page__post-date">
                   {new Date(post.createdAt).toLocaleString()}
                 </p>
+                <PostActions
+                  postId={post.postId}
+                  currentContent={post.content}
+                  onUpdate={handlePostUpdate}
+                  onDelete={handlePostDelete}
+                />
               </li>
             ))}
           </ul>

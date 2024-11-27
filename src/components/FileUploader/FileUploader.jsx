@@ -10,7 +10,6 @@ function FileUploader({ submit }) {
   };
 
   const handleContentChange = (e) => {
-    console.log("Content entered:", e.target.value);
     setContent(e.target.value);
   };
 
