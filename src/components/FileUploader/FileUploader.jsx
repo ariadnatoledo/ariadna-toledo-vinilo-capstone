@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function FileUploader({ submit }) {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   const [content, setContent] = useState("");
+  const fileInputRef = useRef(); 
 
   const handleFileChange = (e) => {
-    console.log("Selected file:", e.target.files[0]);
     setFile(e.target.files[0]);
   };
 
@@ -13,9 +13,19 @@ function FileUploader({ submit }) {
     setContent(e.target.value);
   };
 
+  const handleSubmit = async (e) => {
+    await submit(e, file, content); 
+    setFile(null); 
+    setContent(""); 
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; 
+    }
+  };
+
   return (
-    <form onSubmit={(e) => submit(e, file, content)}>
+    <form onSubmit={handleSubmit}>
       <input
+        ref={fileInputRef} 
         type="file"
         accept="image/*"
         onChange={handleFileChange}
