@@ -2,11 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import "./PostActions.scss"; 
 
 function PostActions({ postId, currentContent, onUpdate, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(currentContent);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const handleEdit = async () => {
     try {
@@ -33,6 +35,8 @@ function PostActions({ postId, currentContent, onUpdate, onDelete }) {
         },
       });
       onDelete(postId); 
+      setIsModalOpen(false); 
+
     } catch (err) {
       console.error("Error deleting post:", err.response?.data || err.message);
       alert("Failed to delete post.");
@@ -59,13 +63,21 @@ function PostActions({ postId, currentContent, onUpdate, onDelete }) {
           <button className="post-actions__edit-btn" onClick={() => setIsEditing(true)}>
             <img src={editIcon} alt="Edit" />
           </button>
-          <button className="post-actions__delete-btn" onClick={handleDelete}>
+          <button
+            className="post-actions__delete-btn"
+            onClick={() => setIsModalOpen(true)} 
+          >
             <img src={deleteIcon} alt="Delete" />
           </button>
         </div>
       )}
+     
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onConfirm={handleDelete}
+        onCancel={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 }
-
 export default PostActions;
