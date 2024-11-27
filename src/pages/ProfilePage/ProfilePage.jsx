@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import FileUploader from "../../components/FileUploader/FileUploader"; 
 import "./ProfilePage.scss";
 
 function ProfilePage({ user }) {
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState({ title: "", content: "", image: null });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,42 +33,36 @@ function ProfilePage({ user }) {
     navigate(`/profile/${user.username}/messages`);
   };
 
-  const handlePostChange = (e) => {
-    const { name, value } = e.target;
-    setNewPost({ ...newPost, [name]: value });
-  };
-
-  const handleImageChange = (e) => {
-    setNewPost({ ...newPost, image: e.target.files[0] });
-  };
-
-  const handleSubmitPost = async (e) => {
+  const handleSubmitPost = async (e, file, content) => {
     e.preventDefault();
 
-    console.log("Starting handleSubmitPost...");
-    console.log("New post data:", newPost);
-
-    
     const formData = new FormData();
-    formData.append("title", newPost.title);
-    formData.append("content", newPost.content);
-    formData.append("image", newPost.image);
+    formData.append("image", file);
+    formData.append("content", content);
+    formData.append("userId", user.userId);
 
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post("http://localhost:3306/users/posts", formData, {
+      const response = await axios.post("http://localhost:3306/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
-      
-      console.log("Post creation response:", response.data);
+
+      setPosts((prevPosts) => [
+        ...prevPosts,
+        {
+          postId: response.data.postId,
+          userId: user.userId,
+          content,
+          image: `/assets/${response.data.image}`,
+          createdAt: new Date().toISOString(),
+        },
+      ]);
 
       alert("Post created successfully!");
-      setNewPost({ title: "", content: "", image: null });
-      window.location.reload(); 
     } catch (err) {
       console.error(err.response?.data?.message || "Error creating post");
       alert("Failed to create post");
@@ -99,50 +93,28 @@ function ProfilePage({ user }) {
               </div>
             </div>
           </div>
-          <form className="profile-page__form" onSubmit={handleSubmitPost}>
+
+          <div className="profile-page__form">
             <h3 className="profile-page__form-title">Create a New Post</h3>
-            <input
-              className="profile-page__form-input"
-              type="text"
-              name="title"
-              value={newPost.title}
-              onChange={handlePostChange}
-              placeholder="Post Title"
-              required
-            />
-            <textarea
-              className="profile-page__form-textarea"
-              name="content"
-              value={newPost.content}
-              onChange={handlePostChange}
-              placeholder="What's on your mind?"
-              required
-            />
-            <input
-              className="profile-page__form-file"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              required
-            />
-            <button type="submit" className="profile-page__form-button">
-              Post
-            </button>
-          </form>
+            <FileUploader submit={handleSubmitPost} />
+          </div>
+
           <h3 className="profile-page__posts-title">{user.username}'s Posts</h3>
           <ul className="profile-page__posts">
-  {posts.map((post) => (
-    <li key={post.postId} className="profile-page__post-item">
-      <h4 className="profile-page__post-title">{post.title}</h4>
-      <img
-        className="profile-page__post-image"
-        src={`http://localhost:3306${post.image}`}
-        alt={post.title}
-      />
-      <p className="profile-page__post-content">{post.content}</p>
-    </li>
-  ))}
-</ul>
+            {posts.map((post) => (
+              <li key={post.postId} className="profile-page__post-item">
+                <img
+                  className="profile-page__post-image"
+                  src={`http://localhost:3306${post.image}`}
+                  alt="Post"
+                />
+                <p className="profile-page__post-content">{post.content}</p>
+                <p className="profile-page__post-date">
+                  {new Date(post.createdAt).toLocaleString()}
+                </p>
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </div>
@@ -150,6 +122,5 @@ function ProfilePage({ user }) {
 }
 
 export default ProfilePage;
-
 
 
