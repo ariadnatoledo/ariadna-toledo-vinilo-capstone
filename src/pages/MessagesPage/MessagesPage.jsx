@@ -27,11 +27,10 @@ const MessagesPage = () => {
     try {
       const response = await axios.post("http://localhost:3306/messages", {
         senderId: user.userId,
-        receiverId: targetUserId, // Replace with the ID of the receiver
+        receiverId: targetUserId, 
         content,
       });
-      console.log(response.data.message); // Log success message
-      // Optionally, refresh the messages list after sending
+      console.log(response.data.message); 
       fetchMessages();
     } catch (err) {
       console.error("Error sending message:", err.response?.data || err.message);

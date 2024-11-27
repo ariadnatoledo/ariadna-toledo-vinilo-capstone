@@ -5,7 +5,7 @@ import "./ProfilePage.scss";
 
 function ProfilePage({ user }) {
   const [posts, setPosts] = useState([]);
-  const [followers, setFollowers] = useState(0); 
+  const [newPost, setNewPost] = useState({ title: "", content: "", image: null });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,8 +33,46 @@ function ProfilePage({ user }) {
     navigate(`/profile/${user.username}/messages`);
   };
 
-  const handleFollow = () => {
-    setFollowers((prev) => prev + 1); // Increment followers count
+  const handlePostChange = (e) => {
+    const { name, value } = e.target;
+    setNewPost({ ...newPost, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    setNewPost({ ...newPost, image: e.target.files[0] });
+  };
+
+  const handleSubmitPost = async (e) => {
+    e.preventDefault();
+
+    console.log("Starting handleSubmitPost...");
+    console.log("New post data:", newPost);
+
+    
+    const formData = new FormData();
+    formData.append("title", newPost.title);
+    formData.append("content", newPost.content);
+    formData.append("image", newPost.image);
+
+    const token = localStorage.getItem("token");
+
+    try {
+      await axios.post("http://localhost:3306/users/posts", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      
+      console.log("Post creation response:", response.data);
+
+      alert("Post created successfully!");
+      setNewPost({ title: "", content: "", image: null });
+      window.location.reload(); 
+    } catch (err) {
+      console.error(err.response?.data?.message || "Error creating post");
+      alert("Failed to create post");
+    }
   };
 
   return (
@@ -51,30 +89,60 @@ function ProfilePage({ user }) {
               <h2>{user.username}</h2>
               <p className="profile-page__bio">{user.bio}</p>
               <div className="profile-page__actions">
-                <button className="profile-page__follow" onClick={handleFollow}>
-                  Follow
-                </button>
-                <span className="profile-page__followers">
-                  {followers} Followers
-                </span>
+                <button className="profile-page__follow">Follow</button>
                 <button
-                  className="profile-page__message"
                   onClick={handleSendMessage}
+                  className="profile-page__message"
                 >
                   Message
                 </button>
               </div>
             </div>
           </div>
+          <form className="profile-page__form" onSubmit={handleSubmitPost}>
+            <h3 className="profile-page__form-title">Create a New Post</h3>
+            <input
+              className="profile-page__form-input"
+              type="text"
+              name="title"
+              value={newPost.title}
+              onChange={handlePostChange}
+              placeholder="Post Title"
+              required
+            />
+            <textarea
+              className="profile-page__form-textarea"
+              name="content"
+              value={newPost.content}
+              onChange={handlePostChange}
+              placeholder="What's on your mind?"
+              required
+            />
+            <input
+              className="profile-page__form-file"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              required
+            />
+            <button type="submit" className="profile-page__form-button">
+              Post
+            </button>
+          </form>
           <h3 className="profile-page__posts-title">{user.username}'s Posts</h3>
           <ul className="profile-page__posts">
-            {posts.map((post) => (
-              <li key={post.id} className="profile-page__post-item">
-                <h4 className="profile-page__post-title">{post.title}</h4>
-                <p className="profile-page__post-body">{post.body}</p>
-              </li>
-            ))}
-          </ul>
+  {posts.map((post) => (
+    <li key={post.postId} className="profile-page__post-item">
+      <h4 className="profile-page__post-title">{post.title}</h4>
+      <img
+        className="profile-page__post-image"
+        src={`http://localhost:3306${post.image}`}
+        alt={post.title}
+      />
+      <p className="profile-page__post-content">{post.content}</p>
+    </li>
+  ))}
+</ul>
         </>
       )}
     </div>
@@ -82,5 +150,6 @@ function ProfilePage({ user }) {
 }
 
 export default ProfilePage;
+
 
 

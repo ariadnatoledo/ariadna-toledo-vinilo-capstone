@@ -81,8 +81,9 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderNav loggedIn={loggedIn} handleLogout={handleLogout} />
-
+ {location.pathname !== "/login" && (
+        <HeaderNav loggedIn={loggedIn} handleLogout={handleLogout} />
+      )}
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/profile" element={<ProfilePage user={user} />} />
