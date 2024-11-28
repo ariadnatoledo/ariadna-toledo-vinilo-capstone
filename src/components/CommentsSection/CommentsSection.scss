@@ -29,3 +29,21 @@
     padding: 0.5rem 1rem;
   }
   
+  .comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem;
+  }
+  
+  .comment-content {
+    flex: 1;
+  }
+  

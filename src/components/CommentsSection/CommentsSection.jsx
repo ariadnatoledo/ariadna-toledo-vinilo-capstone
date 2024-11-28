@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './CommentsSection.scss';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./CommentsSection.scss";
 
 function CommentsSection({ postId, userId }) {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:3306/posts/${postId}/comments`);
+        const response = await axios.get(
+          `http://localhost:3306/posts/${postId}/comments`
+        );
         setComments(response.data);
       } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error("Error fetching comments:", error);
       }
     };
 
@@ -24,16 +26,16 @@ function CommentsSection({ postId, userId }) {
     if (!newComment.trim()) return;
 
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         `http://localhost:3306/posts/${postId}/comments`,
         { userId, content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setComments([...comments, response.data]);
-      setNewComment('');
+      setNewComment("");
     } catch (error) {
-      console.error('Error posting comment:', error);
+      console.error("Error posting comment:", error);
     }
   };
 
@@ -43,8 +45,15 @@ function CommentsSection({ postId, userId }) {
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.commentId} className="comment-item">
-            <p>{comment.content}</p>
-            <p>{new Date(comment.timestamp).toLocaleDateString('en-US')}</p>
+            <img
+              src={`http://localhost:3306${comment.avatar}`}
+              alt={`${comment.username}`}
+              className="comment-avatar"
+            />
+            <div className="comment-content">
+              <p>{comment.content}</p>
+              <p>{new Date(comment.timestamp).toLocaleDateString("en-US")}</p>
+            </div>
           </li>
         ))}
       </ul>
