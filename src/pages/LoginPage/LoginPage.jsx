@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { loginIcon } from "../../assets/icons/login.png";
 import "./LoginPage.scss";
 
 function LoginPage({ handleLogin, error }) {

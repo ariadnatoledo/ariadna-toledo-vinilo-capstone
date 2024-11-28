@@ -60,7 +60,8 @@ function PostDetails({ details }) {
           ))}
         </ul>
       </div>
-      <CommentsSection postId={post.postId} />
+      {/* Remember to check the below comment section */}
+      <CommentsSection postId={post.postId} userId={post.userId} />
     </div>
   );
 }
