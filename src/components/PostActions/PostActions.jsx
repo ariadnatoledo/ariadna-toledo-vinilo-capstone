@@ -5,6 +5,8 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import "./PostActions.scss"; 
 
+export { deleteIcon };
+
 function PostActions({ postId, currentContent, onUpdate, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(currentContent);

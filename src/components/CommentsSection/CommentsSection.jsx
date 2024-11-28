@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { deleteIcon } from "../PostActions/PostActions"; 
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; 
 import "./CommentsSection.scss";
 
 function CommentsSection({ postId, userId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
- 
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [commentToDelete, setCommentToDelete] = useState(null); 
+
   const fetchComments = async () => {
     try {
       const response = await axios.get(
         `http://localhost:3306/posts/${postId}/comments`
       );
-      console.log("Fetched comments:", response.data); 
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
-  
+
   useEffect(() => {
-   
     fetchComments();
   }, [postId]);
 
@@ -27,41 +29,58 @@ function CommentsSection({ postId, userId }) {
     e.preventDefault();
     if (!newComment.trim()) return;
 
-    console.log("Attempting to post a comment...");
-    console.log("Post ID:", postId);
-    console.log("User ID:", userId);
-    console.log("Content:", newComment);
-
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(
+      await axios.post(
         `http://localhost:3306/posts/${postId}/comments`,
         { userId, content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      const newCommentData = {
-        ...response.data,
-        avatar: response.data.avatar, 
-        timestamp: response.data.timestamp || new Date().toISOString(), 
-      content: response.data.content
-    };
-
-    fetchComments();
-
-      console.log("New comment data:", newCommentData); 
-
+      fetchComments(); 
     } catch (error) {
       console.error("Error posting comment:", error.response?.data || error.message);
     }
+  };
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(`http://localhost:3306/posts/${postId}/comments/${commentId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.commentId !== commentId)
+      );
+    } catch (error) {
+      console.error("Error deleting comment:", error.response?.data || error.message);
+      alert("Failed to delete comment.");
+    }
+  };
+
+  const confirmDeleteComment = (commentId) => {
+    setCommentToDelete(commentId); 
+    setIsModalOpen(true); 
+  };
+
+  const handleConfirmDelete = async () => {
+    if (commentToDelete) {
+      await handleDeleteComment(commentToDelete);
+      setCommentToDelete(null);
+      setIsModalOpen(false); 
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setCommentToDelete(null);
+    setIsModalOpen(false); 
   };
 
   return (
     <div className="comments-section">
       <h3>Comments</h3>
       <ul className="comments-list">
-        {comments.map((comment, index) => (
-          <li key={`${comment.commentId || index}`} className="comment-item">
+        {comments.map((comment) => (
+          <li key={comment.commentId} className="comment-item">
             <img
               src={`http://localhost:3306${comment.avatar}`}
               alt={comment.username || "User Avatar"}
@@ -70,6 +89,12 @@ function CommentsSection({ postId, userId }) {
             <div className="comment-content">
               <p>{comment.content}</p>
               <p>{new Date(comment.timestamp).toLocaleDateString("en-US")}</p>
+              <button
+                className="delete-comment-btn"
+                onClick={() => confirmDeleteComment(comment.commentId)}
+              >
+                <img src={deleteIcon} alt="Delete Comment" />
+              </button>
             </div>
           </li>
         ))}
@@ -83,9 +108,13 @@ function CommentsSection({ postId, userId }) {
         />
         <button type="submit">Post Comment</button>
       </form>
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
   );
 }
 
 export default CommentsSection;
-

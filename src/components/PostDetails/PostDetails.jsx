@@ -60,8 +60,8 @@ function PostDetails({ details }) {
           ))}
         </ul>
       </div>
-      {/* Remember to check the below comment section */}
-      <CommentsSection postId={post.postId} userId={post.userId} />
+      <CommentsSection postId={post.postId} userId={post.userId} onDelete={handlePostDelete}
+ />
     </div>
   );
 }

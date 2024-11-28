@@ -1,49 +1,64 @@
 .comments-section {
-    margin-top: 2rem;
+  margin-top: 2rem;
+}
+
+.comments-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment-item {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+.comment-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-comment-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
-  
-  .comments-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .comment-item {
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem 0;
-  }
-  
-  .comment-form {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .comment-form textarea {
+}
+
+.comment-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
     resize: vertical;
     min-height: 100px;
     margin-bottom: 0.5rem;
   }
-  
-  .comment-form button {
+
+  button {
     align-self: flex-end;
     padding: 0.5rem 1rem;
   }
-  
-  .comment-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-  
-  .comment-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 0.5rem;
-  }
-  
-  .comment-content {
-    flex: 1;
-  }
-  
+}

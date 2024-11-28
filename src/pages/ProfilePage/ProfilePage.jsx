@@ -124,10 +124,7 @@ function ProfilePage({ user, loggedInUserId }) {
                   src={`http://localhost:3306${post.image}`}
                   alt="Post"
                 />
-                {/* <p className="profile-page__post-content">{post.content}</p> */}
-                {/* <p className="profile-page__post-date"> */}
-                  {/* {new Date(post.createdAt).toLocaleString()} */}
-                {/* </p> */}
+               
               </li>
             ))}
           </ul>
