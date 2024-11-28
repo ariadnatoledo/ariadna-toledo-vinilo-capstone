@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PostActions from "../../components/PostActions/PostActions";
 import "./PostDetails.scss";
+import CommentsSection from "../CommentsSection/CommentsSection";
 
 function PostDetails({ details }) {
   const { id } = useParams(); 
@@ -50,7 +51,6 @@ function PostDetails({ details }) {
       </div>
 
       <div className="post-details__comments">
-        <h3>Comments</h3>
         <ul>
           {comments.map((comment) => (
             <li key={comment.id}>
@@ -60,6 +60,7 @@ function PostDetails({ details }) {
           ))}
         </ul>
       </div>
+      <CommentsSection postId={post.postId} />
     </div>
   );
 }

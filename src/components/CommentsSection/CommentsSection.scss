@@ -1,0 +1,31 @@
+.comments-section {
+    margin-top: 2rem;
+  }
+  
+  .comments-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comment-item {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+  }
+  
+  .comment-form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comment-form textarea {
+    resize: vertical;
+    min-height: 100px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .comment-form button {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+  }
+  
