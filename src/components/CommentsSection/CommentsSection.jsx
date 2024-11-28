@@ -7,8 +7,8 @@ import "./CommentsSection.scss";
 function CommentsSection({ postId, userId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false); 
-  const [commentToDelete, setCommentToDelete] = useState(null); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [commentToDelete, setCommentToDelete] = useState(null);
 
   const fetchComments = async () => {
     try {
@@ -21,12 +21,14 @@ function CommentsSection({ postId, userId }) {
     }
   };
 
+  
   useEffect(() => {
     fetchComments();
   }, [postId]);
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
+
     if (!newComment.trim()) return;
 
     try {
@@ -36,6 +38,8 @@ function CommentsSection({ postId, userId }) {
         { userId, content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
+      setNewComment(""); 
       fetchComments(); 
     } catch (error) {
       console.error("Error posting comment:", error.response?.data || error.message);
@@ -58,21 +62,21 @@ function CommentsSection({ postId, userId }) {
   };
 
   const confirmDeleteComment = (commentId) => {
-    setCommentToDelete(commentId); 
-    setIsModalOpen(true); 
+    setCommentToDelete(commentId);
+    setIsModalOpen(true);
   };
 
   const handleConfirmDelete = async () => {
     if (commentToDelete) {
       await handleDeleteComment(commentToDelete);
       setCommentToDelete(null);
-      setIsModalOpen(false); 
+      setIsModalOpen(false);
     }
   };
 
   const handleCancelDelete = () => {
     setCommentToDelete(null);
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
   return (
