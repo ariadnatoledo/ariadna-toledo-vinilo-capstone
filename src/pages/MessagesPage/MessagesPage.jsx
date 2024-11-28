@@ -13,38 +13,30 @@ const MessagesPage = () => {
   const [error, setError] = useState(null);
 
   const fetchMessages = async () => {
-    console.log("Fetching messages for:", username);
     try {
       const response = await axios.get(`http://localhost:3306/messages/${username}`);
-      console.log("Fetched messages:", response.data.messages);
       setMessages(response.data.messages);
     } catch (err) {
-      console.error("Error fetching messages:", err);
       setError("Failed to fetch messages");
     }
   };
 
   useEffect(() => {
-    console.log("useEffect triggered: Fetching messages for username:", username);
     fetchMessages();
   }, [username]);
 
   useEffect(() => {
-    console.log("Setting up Socket.IO listener for 'receive_message' event.");
     socket.on("receive_message", (message) => {
-      console.log("New message received via socket:", message);
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 
     return () => {
-      console.log("Cleaning up Socket.IO listener.");
       socket.off("receive_message");
     };
   }, []);
 
   const handleSendMessage = async () => {
     if (!newMessage.trim()) {
-      console.warn("Validation Error: Message cannot be empty.");
       setError("Message cannot be empty.");
       return;
     }
@@ -90,7 +82,6 @@ const MessagesPage = () => {
         className="new-message-input"
         value={newMessage}
         onChange={(e) => {
-          console.log("New message input changed:", e.target.value);
           setNewMessage(e.target.value);
         }}
         placeholder="Type your message"
