@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import FileUploader from "../../components/FileUploader/FileUploader"; 
+import FollowStats from "../../components/FollowStats/FollowStats";
 import "./ProfilePage.scss";
 
-function ProfilePage({ user }) {
+function ProfilePage({ user, loggedInUserId }) {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
 
@@ -94,8 +95,8 @@ function ProfilePage({ user }) {
             <div className="profile-page__info">
               <h2>{user.username}</h2>
               <p className="profile-page__bio">{user.bio}</p>
+              <FollowStats userId={user.userId} />
               <div className="profile-page__actions">
-                <button className="profile-page__follow">Follow</button>
                 <button
                   onClick={handleSendMessage}
                   className="profile-page__message"

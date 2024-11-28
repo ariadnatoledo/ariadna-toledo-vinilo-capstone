@@ -1,0 +1,30 @@
+.follow-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &__counts {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    &__button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+  
+      &.follow {
+        background-color: #007bff;
+        color: white;
+      }
+  
+      &.unfollow {
+        background-color: #dc3545;
+        color: white;
+      }
+    }
+  }
+  
