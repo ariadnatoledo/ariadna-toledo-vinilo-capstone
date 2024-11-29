@@ -11,7 +11,7 @@ const VinylOfTheWeek = () => {
   useEffect(() => {
     const fetchVinyls = async () => {
       try {
-        const response = await axios.get("http://localhost:3306/vinyls/random");
+        const response = await axios.get("http://localhost:3306/homepage-vinyls");
         setVinyls(response.data);
       } catch (err) {
         setError("Failed to fetch vinyls");
