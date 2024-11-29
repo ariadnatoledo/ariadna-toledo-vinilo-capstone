@@ -4,54 +4,88 @@
 @use "../../styles/partials/typography" as *;
 
 .vinyl-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+  background-color: #f8f8f8;
+
+  .vinyl-hero__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-  
-    &__card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      border-radius: 10px;
-      background-color: #f4f4f4;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      width: 250px;
-  
-      &:hover {
-        transform: scale(1.05);
-      }
-  
-      &.active {
-        // border: 2px solid #0073e6;
-        background-color: #eaf6ff;
-      }
+    cursor: pointer;
+    z-index: 10;
+
+    &.left {
+      left: 10px;
     }
-  
-    &__image {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+
+    &.right {
+      right: 10px;
     }
-  
-    &__info {
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  .vinyl-hero__wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .vinyl-hero__card {
+    flex: 0 0 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transform: scale(0.95); 
+    transition: opacity 0.5s, transform 0.5s;
+
+    &.active {
+      opacity: 1;
+      transform: scale(1); 
+    }
+
+    .vinyl-hero__image {
+      max-height: 250px;
+      width: auto;
+      margin-bottom: 10px;
+    }
+
+    .vinyl-hero__info {
       text-align: center;
-  
+      color: #333;
+
       h2 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
       }
-  
+
       p {
         font-size: 1rem;
-        margin-bottom: 1rem;
-        color: #555;
+        margin-bottom: 5px;
+      }
+
+      small {
+        color: #777;
       }
     }
   }
-  
+}

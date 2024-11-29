@@ -23,54 +23,61 @@ const VinylOfTheWeek = () => {
     fetchVinyls();
   }, []);
 
-  useEffect(() => {
-    if (vinyls.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentVinylIndex((prevIndex) => (prevIndex + 1) % vinyls.length);
-      }, 5000); 
-
-      return () => clearInterval(interval); 
-    }
-  }, [vinyls]);
+  const handleSlide = (direction) => {
+    setCurrentVinylIndex((prevIndex) => {
+      if (direction === "left") {
+        return prevIndex === 0 ? vinyls.length - 1 : prevIndex - 1;
+      } else {
+        return (prevIndex + 1) % vinyls.length;
+      }
+    });
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (
     <div className="vinyl-hero">
-      {vinyls.map((vinyl, index) => (
-        <div
-          key={vinyl.vinylId}
-          className={`vinyl-hero__card ${currentVinylIndex === index ? "active" : ""}`}
-          onMouseEnter={(e) => e.currentTarget.querySelector("audio").play()}
-          onMouseLeave={(e) => {
-            const audio = e.currentTarget.querySelector("audio");
-            audio.pause();
-            audio.currentTime = 0; 
-          }}
-        >
-          <img
-            className="vinyl-hero__image"
-            src={`http://localhost:3306${vinyl.coverImage}`}
-            alt={`${vinyl.title} cover`}
-          />
-          <div className="vinyl-hero__info">
-            <h2>{vinyl.title}</h2>
-            <p>{vinyl.artist}</p>
-            <p>Label: {vinyl.label}</p>
-            <p>{vinyl.tracklist}</p>
-            <small>Rating: {vinyl.averageRating}</small>
-            <audio>
-              <source src={`http://localhost:3306${vinyl.previewTrack}`} type="audio/mp3" />
-              Your browser does not support the audio element.
-            </audio>
+      <button
+        className="vinyl-hero__arrow left"
+        onClick={() => handleSlide("left")}
+      >
+        &#8592;
+      </button>
+      <div
+        className="vinyl-hero__wrapper"
+        style={{ transform: `translateX(-${currentVinylIndex * 100}%)` }}
+      >
+        {vinyls.map((vinyl, index) => (
+          <div
+            key={vinyl.vinylId || index}
+            className={`vinyl-hero__card ${
+              currentVinylIndex === index ? "active" : ""
+            }`}
+          >
+            <img
+              className="vinyl-hero__image"
+              src={`http://localhost:3306${vinyl.coverImage}`}
+              alt={`${vinyl.title} cover`}
+            />
+            <div className="vinyl-hero__info">
+              <h2>{vinyl.title}</h2>
+              <p>{vinyl.artist}</p>
+              <p>Label: {vinyl.label}</p>
+              <small>Rating: {vinyl.averageRating}</small>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <button
+        className="vinyl-hero__arrow right"
+        onClick={() => handleSlide("right")}
+      >
+        &#8594;
+      </button>
     </div>
   );
 };
 
 export default VinylOfTheWeek;
-
 
