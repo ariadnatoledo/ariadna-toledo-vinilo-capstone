@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client"; 
+import axios from "axios";
+import { io } from "socket.io-client";
 import "./MessagesPage.scss";
 
 const socket = io("http://localhost:3306");
 
-const MessagesPage = ({ user }) => {
+const MessagesPage = ({ loggedInUserId }) => {
   const { username } = useParams(); 
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -14,10 +14,13 @@ const MessagesPage = ({ user }) => {
 
   const fetchMessages = async () => {
     try {
+      console.log(`Fetching messages for ${username}`);
       const response = await axios.get(`http://localhost:3306/messages/${username}`);
+      console.log("Fetched messages:", response.data.messages);
       setMessages(response.data.messages);
     } catch (err) {
-      setError("Failed to fetch messages");
+      console.error("Error fetching messages:", err);
+      setError("Failed to fetch messages.");
     }
   };
 
@@ -27,7 +30,8 @@ const MessagesPage = ({ user }) => {
 
   useEffect(() => {
     socket.on("receive_message", (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
+      console.log("New message received via socket:", message);
+      setMessages((prev) => [...prev, message]);
     });
 
     return () => {
@@ -40,30 +44,22 @@ const MessagesPage = ({ user }) => {
       setError("Message cannot be empty.");
       return;
     }
-  
-    console.log("user is")
-    console.log(user)
-    const senderId = user.userId; 
-
-    const message = {
-      senderId,
-      receiverUsername: username,
-      content: newMessage,
-    };
-
-    console.log("Sending message:", message);
 
     try {
+      const message = {
+        senderId: loggedInUserId,
+        receiverUsername: username, 
+        content: newMessage,
+      };
+
+      console.log("Sending message:", message);
       const response = await axios.post("http://localhost:3306/messages", message);
-      console.log("Message successfully sent. Response:", response.data);
-      
-      console.log("Message emitted via socket:", response.data.newMessage);
-      
+      console.log("Message sent successfully:", response.data);
       setNewMessage("");
-      setError(null); 
+      setError(null);
     } catch (err) {
       console.error("Error sending message:", err.response?.data || err.message);
-      setError("Failed to send message");
+      setError("Failed to send message.");
     }
   };
 
@@ -71,31 +67,25 @@ const MessagesPage = ({ user }) => {
     <div className="messages-page">
       <h2>Messages with {username}</h2>
       <ul className="messages-list">
-        {messages.map((msg) => (
-          <li key={msg.messageId} className="message-item">
+        {messages.map((msg, index) => (
+          <li key={index} className="message-item">
             <p>
-              <strong>{msg.senderId === "user1" ? "You" : msg.senderId}:</strong> {msg.content}
+              <strong>{msg.senderId === loggedInUserId ? "You" : username}:</strong> {msg.content}
             </p>
             <small>{new Date(msg.timestamp).toLocaleString()}</small>
           </li>
         ))}
       </ul>
       <textarea
-        className="new-message-input"
         value={newMessage}
-        onChange={(e) => {
-          setNewMessage(e.target.value);
-        }}
+        onChange={(e) => setNewMessage(e.target.value)}
         placeholder="Type your message"
       />
-      <button className="send-message-button" onClick={handleSendMessage}>
-        Send
-      </button>
+      <button onClick={handleSendMessage}>Send</button>
       {error && <p className="error">{error}</p>}
     </div>
   );
 };
 
 export default MessagesPage;
-
 

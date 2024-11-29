@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -18,7 +24,7 @@ function App() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
   /*
    * Component Mount, if JWT token is set the user is still considered logged in
@@ -62,6 +68,7 @@ function App() {
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       setLoggedIn(true);
+      console.log(user);
       setUser(user);
       setError("");
       navigate("/");
@@ -83,7 +90,7 @@ function App() {
 
   return (
     <div className="App">
- {location.pathname !== "/login" && (
+      {location.pathname !== "/login" && (
         <HeaderNav loggedIn={loggedIn} handleLogout={handleLogout} />
       )}
       <Routes>
@@ -98,7 +105,8 @@ function App() {
           path="/login"
           element={<LoginPage handleLogin={handleLogin} error={error} />}
         />
-        <Route path="/friends" element={<FriendsPage />} />
+        <Route path="/friends" element={<FriendsPage loggedInUserId={user.userId} />} />
+        <Route path="/messages/:username" element={<MessagesPage loggedInUserId={user.userId}  />} />
         <Route path="/shows" element={<ShowsPage />} />
       </Routes>
 

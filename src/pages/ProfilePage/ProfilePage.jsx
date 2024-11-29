@@ -5,7 +5,7 @@ import FileUploader from "../../components/FileUploader/FileUploader";
 import FollowStats from "../../components/FollowStats/FollowStats";
 import "./ProfilePage.scss";
 
-function ProfilePage({ user, loggedInUserId }) {
+function ProfilePage({ user }) {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
 
@@ -29,10 +29,6 @@ function ProfilePage({ user, loggedInUserId }) {
       getPosts();
     }
   }, [user.userId]);
-
-  const handleSendMessage = () => {
-    navigate(`/profile/${user.username}/messages`);
-  };
 
   const handleSubmitPost = async (e, file, content) => {
     e.preventDefault();
@@ -70,18 +66,6 @@ function ProfilePage({ user, loggedInUserId }) {
     }
   };
 
-  const handlePostUpdate = (postId, updatedContent) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.postId === postId ? { ...post, content: updatedContent } : post
-      )
-    );
-  };
-
-  const handlePostDelete = (postId) => {
-    setPosts((prevPosts) => prevPosts.filter((post) => post.postId !== postId));
-  };
-
   return (
     <div className="profile-page">
       {user.userId && (
@@ -96,14 +80,6 @@ function ProfilePage({ user, loggedInUserId }) {
               <h2>{user.username}</h2>
               <p className="profile-page__bio">{user.bio}</p>
               <FollowStats userId={user.userId} />
-              <div className="profile-page__actions">
-                <button
-                  onClick={handleSendMessage}
-                  className="profile-page__message"
-                >
-                  Message
-                </button>
-              </div>
             </div>
           </div>
 
@@ -115,16 +91,16 @@ function ProfilePage({ user, loggedInUserId }) {
           <h3 className="profile-page__posts-title">{user.username}'s Posts</h3>
           <ul className="profile-page__posts">
             {posts.map((post) => (
-              <li key={post.postId} className="profile-page__post-item"
-              onClick={() => navigate(`/post/${post.postId}`)} 
-
+              <li
+                key={post.postId}
+                className="profile-page__post-item"
+                onClick={() => navigate(`/post/${post.postId}`)}
               >
                 <img
                   className="profile-page__post-image"
                   src={`http://localhost:3306${post.image}`}
                   alt="Post"
                 />
-               
               </li>
             ))}
           </ul>
@@ -135,5 +111,4 @@ function ProfilePage({ user, loggedInUserId }) {
 }
 
 export default ProfilePage;
-
 
