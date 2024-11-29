@@ -6,7 +6,7 @@ import "./MessagesPage.scss";
 
 const socket = io("http://localhost:3306");
 
-const MessagesPage = () => {
+const MessagesPage = ({ user }) => {
   const { username } = useParams(); 
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
@@ -41,7 +41,9 @@ const MessagesPage = () => {
       return;
     }
   
-    const senderId = 1; 
+    console.log("user is")
+    console.log(user)
+    const senderId = user.userId; 
 
     const message = {
       senderId,

@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import AboutPage from "./pages/AboutPage/AboutPage";
+import FriendsPage from "./pages/FriendsPage/FriendsPage";
 import ShowsPage from "./pages/ShowsPage/ShowsPage";
 import Footer from "./components/Footer/Footer";
 import PostDetails from "./components/PostDetails/PostDetails";
@@ -98,7 +98,7 @@ function App() {
           path="/login"
           element={<LoginPage handleLogin={handleLogin} error={error} />}
         />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/friends" element={<FriendsPage />} />
         <Route path="/shows" element={<ShowsPage />} />
       </Routes>
 

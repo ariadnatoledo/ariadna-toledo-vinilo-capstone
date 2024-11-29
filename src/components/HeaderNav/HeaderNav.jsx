@@ -13,7 +13,7 @@ function HeaderNav({ loggedIn, handleLogout }) {
       <nav className="header-nav__links">
         {loggedIn ? (
           <>
-            <Link to="/about">About</Link>
+            <Link to="/friends">Friends</Link>
             <Link to="/shows">Shows</Link>
             <Link to="/profile">Profile</Link>
             <button onClick={handleLogout}>Logout</button>

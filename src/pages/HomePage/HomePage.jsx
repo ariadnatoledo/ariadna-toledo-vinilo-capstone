@@ -3,6 +3,7 @@ import VinylOfTheWeek from "../../components/VinylOfTheWeek/VinylOfTheWeek";
 import HeroSection from "../../components/HeroSection/HeroSection";
 
 function HomePage({ user }) {
+  console.log(user)
   return (
     <div>
       {user.username && (
