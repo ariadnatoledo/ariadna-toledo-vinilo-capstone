@@ -57,6 +57,9 @@ const VinylOfTheWeek = () => {
           <div className="vinyl-hero__info">
             <h2>{vinyl.title}</h2>
             <p>{vinyl.artist}</p>
+            <p>Label: {vinyl.label}</p>
+            <p>{vinyl.tracklist}</p>
+            <small>Rating: {vinyl.averageRating}</small>
             <audio>
               <source src={`http://localhost:3306${vinyl.previewTrack}`} type="audio/mp3" />
               Your browser does not support the audio element.
