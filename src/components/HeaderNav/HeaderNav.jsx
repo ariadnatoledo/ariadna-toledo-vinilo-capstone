@@ -1,31 +1,88 @@
+import { Dropdown } from "@mui/base/Dropdown";
+import { MenuButton } from "@mui/base/MenuButton";
+import { Menu } from "@mui/base/Menu";
+import { MenuItem } from "@mui/base/MenuItem";
 import { Link } from "react-router-dom";
-import viniloIcon from "../../assets/images/vinilo-2.jpeg";
+import viniloIcon from "../../assets/logo/vinilo.png";
+import menuIcon from "../../assets/icons/menu-24px.svg";
 import "./HeaderNav.scss";
 
 function HeaderNav({ loggedIn, handleLogout }) {
+  const handleMenuClick = (action) => {
+    switch (action) {
+      case "Log out":
+        handleLogout();
+        break;
+      default:
+        console.log(`Navigating to ${action}...`);
+    }
+  };
+
   return (
     <header className="header-nav">
       <div className="header-nav__logo">
-      <Link to="/">
-        <img src={viniloIcon} alt="Vinilo Logo" className="header-nav__icon" />
+        <Link to="/">
+          <img
+            src={viniloIcon}
+            alt="Vinilo Logo"
+            className="header-nav__icon"
+          />
         </Link>
       </div>
-      <nav className="header-nav__links">
-        {loggedIn ? (
-          <>
+
+      {loggedIn ? (
+        <>
+          <div className="header-nav__mobile">
+            <Dropdown>
+              <MenuButton className="header-nav__menu-button">
+              <img
+                  src={menuIcon}
+                  alt="Menu Icon"
+                  className="header-nav__menu-icon"
+                />
+              </MenuButton>
+              <Menu className="header-nav__menu">
+                <Link to="/profile" className="header-nav__menu-item">
+                  <MenuItem>Profile</MenuItem>
+                </Link>
+                <Link to="/friends" className="header-nav__menu-item">
+                  <MenuItem>My Friends</MenuItem>
+                </Link>
+                <Link to="/shows" className="header-nav__menu-item">
+                  <MenuItem>Shows</MenuItem>
+                </Link>
+                <MenuItem
+                  className="header-nav__menu-item"
+                  onClick={() => handleMenuClick("Log out")}
+                >
+                  Log out
+                </MenuItem>
+              </Menu>
+            </Dropdown>
+          </div>
+
+          <nav className="header-nav__links">
+            <Link to="/profile">Profile</Link>
             <Link to="/friends">Friends</Link>
             <Link to="/shows">Shows</Link>
-            <Link to="/profile">Profile</Link>
             <button onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <Link to="/login">Login</Link>
-        )}
-      </nav>
+          </nav>
+        </>
+      ) : (
+        <>
+          <div className="header-nav__mobile">
+            <Link to="/login" className="header-nav__menu-button">
+              Login
+            </Link>
+          </div>
+
+          <nav className="header-nav__links">
+            <Link to="/login">Login</Link>
+          </nav>
+        </>
+      )}
     </header>
   );
 }
 
 export default HeaderNav;
-
-
