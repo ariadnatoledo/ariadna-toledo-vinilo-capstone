@@ -1,6 +1,13 @@
 @font-face {
-    font-family: 'Roboto', sans-serif;
-    src: url("../../assets/fonts/Roboto/Roboto-Black.ttf");
-    font-weight: 700;
+  font-family: "Montserrat";
+  src: url("../../assets/fonts/Montserrat/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Montserrat-italic";
+    src: url("../../assets/fonts/Montserrat/Montserrat/Montserrat-Italic-VariableFont_wght.ttf");
+    font-weight: 300;
     font-style: normal;
   }

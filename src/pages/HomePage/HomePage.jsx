@@ -7,16 +7,7 @@ function HomePage({ user }) {
   return (
     <div>
       {user.username && (
-        <h3 className="welcome-message">
-          Welcome {user.username}
-          {user.avatar && (
-            <img
-              className="avatar avatar--homepage"
-              src={`http://localhost:3306${user.avatar}`}
-              alt={user.username}
-            />
-          )}
-        </h3>
+        <h3 className="welcome-message"></h3>
       )}
       <section className="hero">
         <HeroSection />
