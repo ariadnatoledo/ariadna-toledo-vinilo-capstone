@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import FileUploader from "../../components/FileUploader/FileUploader"; 
+import FileUploader from "../../components/FileUploader/FileUploader";
 import FollowStats from "../../components/FollowStats/FollowStats";
 import "./ProfilePage.scss";
 
@@ -41,12 +41,16 @@ function ProfilePage({ user }) {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await axios.post("http://localhost:3306/posts", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:3306/posts",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setPosts((prevPosts) => [
         ...prevPosts,
@@ -77,9 +81,16 @@ function ProfilePage({ user }) {
               alt={user.username}
             />
             <div className="profile-page__info">
-              <h2>{user.username}</h2>
-              <p className="profile-page__bio">{user.bio}</p>
-              <FollowStats userId={user.userId} />
+              <div className="profile-page__username">
+                <h2>{user.username}</h2>
+             
+              <div className="profile-page__follow-stats">
+                <FollowStats userId={user.userId} />
+              </div>
+              </div>
+              <div className="profile-page__bio">
+                <p>{user.bio}</p>
+              </div>
             </div>
           </div>
 
@@ -111,4 +122,3 @@ function ProfilePage({ user }) {
 }
 
 export default ProfilePage;
-

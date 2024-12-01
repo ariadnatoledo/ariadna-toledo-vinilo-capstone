@@ -4,37 +4,42 @@
 @use "../../styles/partials/typography" as *;
 
 .profile-page {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 10px;
-  background: $color-white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+padding: 1rem 1rem; 
+font-family: "Montserrat";
 
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    border-bottom: 2px solid $color-blue;
+    border-bottom: 1px solid $color-blue;
     padding-bottom: 1rem;
+    gap: 2rem;
   }
 
   &__avatar {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid $color-blue;
     margin-right: 20px;
+  }
+
+  &__username {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
   }
 
   &__info {
     h2 {
-      font-size: 24px;
-      color: $color-blue;
+      font-size: 16px;
+      color: black;
     }
 
+
+
     .profile-page__bio {
+      display: flex;
       font-size: 16px;
       color: $color-shadow;
     }
@@ -55,7 +60,7 @@
           color: $color-white;
 
           &:hover {
-            background-color: darken($color-red, 10%);
+            background-color: gray;
           }
         }
 
@@ -65,7 +70,7 @@
           border: 2px solid $color-blue;
 
           &:hover {
-            background-color: lighten($color-blue, 40%);
+            background-color: blue;
             color: $color-white;
           }
         }
@@ -114,7 +119,7 @@
       font-weight: bold;
 
       &:hover {
-        background-color: darken($color-blue, 10%);
+        background-color: gray;
       }
     }
   }
@@ -159,3 +164,37 @@
 img {
   width: 30%;
 }
+
+
+@include tablet {
+  .profile-page {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+
+@include desktop {
+  .profile-page {
+    padding: 2.25rem 8.75rem;
+  }
+}
+
+.follow-stats {
+  &__counts {
+    display: flex;
+    flex-direction: row; 
+    gap: 0.5rem; 
+
+    p {
+      background-color: gray;
+      border: 1px solid $color-shadow; 
+      padding: 0.5rem; 
+      border-radius: 4px; 
+    }
+  }
+}
+
+
+
+
+
