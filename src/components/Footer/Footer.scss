@@ -4,10 +4,10 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-    background: $color-white;
-    color: black;
-    padding: 0rem 1rem;
-    font-family: "Arial", sans-serif;
+    background: black;
+    color: white;
+    padding: 1rem 1rem;
+    font-family: "Montserrat";
 
   
     &__content {
@@ -35,14 +35,16 @@
       text-align: center;
   
       & .footer__title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: bold;
         margin: 0.5rem 0;
+        padding: 1rem;
       }
   
       & .footer__tagline {
-        font-size: 1rem;
+        font-size: 0.875rem;
         margin: 0.5rem 0 0;
+        font-family: "Montserrat-italic";
       }
     }
   
@@ -63,9 +65,9 @@
           margin-bottom: 0.5rem;
   
           & .footer__link, & .footer__social-link {
-            color: black;
+            color: white;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.875rem;
             transition: color 0.3s ease;
   
             &:hover {
@@ -85,3 +87,17 @@
     }
   }
   
+  @include tablet {
+    .footer {
+      padding: 1.5rem 1.5rem;
+      &__content {
+        align-items: center;
+      }
+    }
+  }
+
+  @include desktop {
+    .footer {
+      padding: 2.25rem 8.75rem;
+    }
+  }

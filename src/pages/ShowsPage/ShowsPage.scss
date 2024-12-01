@@ -1,34 +1,41 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/typography" as *;
+
 .shows-page {
-    padding: 20px;
-  
-    .shows-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  
-    .show-card {
-      background: #f9f9f9;
-      padding: 15px;
+  padding: 1rem;
+  font-family: "Montserrat";
+
+  .shows-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .show-card {
+    background: #f9f9f9;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+
+    img {
+      width: 100%;
+      height: auto;
       border-radius: 8px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 300px;
-  
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-      }
-  
-      h3 {
-        margin-top: 10px;
-      }
-  
-      p {
-        margin: 5px 0;
-        font-size: 14px;
-      }
+    }
+
+    h3 {
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 14px;
     }
   }
-  
+}
