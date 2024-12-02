@@ -1,30 +1,34 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/typography" as *;
+
 .follow-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__counts {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  
-    &__counts {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    font-weight: bold;
+
+    &.follow {
+      background-color: #007bff;
+      color: white;
     }
-  
-    &__button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-  
-      &.follow {
-        background-color: #007bff;
-        color: white;
-      }
-  
-      &.unfollow {
-        background-color: #dc3545;
-        color: white;
-      }
+
+    &.unfollow {
+      background-color: #dc3545;
+      color: white;
     }
   }
-  
+}

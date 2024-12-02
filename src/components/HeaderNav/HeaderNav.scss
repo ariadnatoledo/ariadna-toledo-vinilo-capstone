@@ -15,8 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 40px;
+    width: 5rem;
+    height: 2.5rem;
     overflow: hidden;
 
     .header-nav__icon {
@@ -33,11 +33,10 @@
     border: none;
     cursor: pointer;
     color: white;
-    
 
     .header-nav__menu-icon {
-      width: 24px;
-      height: 24px;
+      width: 1.5rem;
+      height: 1.5rem;
       object-fit: contain;
       filter: invert(100%);
     }
@@ -45,16 +44,15 @@
 
   &__menu {
     background-color: $color-dark-blue;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     padding: 0.5rem;
     position: absolute;
-    top: 40px;
+    top: 2.5rem;
     right: 0;
     z-index: 10;
     max-width: 30%;
     box-sizing: border-box;
-    
   }
 
   &__menu-item {
@@ -68,7 +66,7 @@
 
     &:hover {
       background-color: #dae8e8;
-      border-radius: 6px;
+      border-radius: 0.375rem;
       cursor: pointer;
     }
   }
@@ -98,15 +96,13 @@
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     &__links {
       display: none;
-      
     }
 
     &__mobile {
       display: block;
-      
     }
   }
 }

@@ -5,59 +5,59 @@
 
 
 .friends-page {
-    padding: 1rem;
-    font-family: "Montserrat";
-    margin: 0 auto;
-    @include tablet {
-      padding: 1.5rem;
-    }
-    @include desktop {
-      padding: 2.25rem 8.75rem;
-    }
-  
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    .friends-list {
-      list-style: none;
-      padding: 0;
-  
-      .friend-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid $color-shadow;
-        padding-top: 1rem;
-  
-        .friend-username {
-          font-size: 16px;
-          font-weight: bold;
-        }
-  
-        .message-button {
-          width: 164px;
-          padding: 5px 10px;
-          font-size: 14px;
-          background-color: #005fa3;
-          color: #fff;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-  
-          &:hover {
-            background-color: #0056b3;
-          }
-          
+  padding: 1rem;
+  font-family: "Montserrat";
+  margin: 0 auto;
+
+  @include tablet {
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 2.25rem 8.75rem;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .friends-list {
+    list-style: none;
+    padding: 0;
+
+    .friend-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.0625rem solid $color-shadow;
+      padding-top: 1rem;
+
+      .friend-username {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .message-button {
+        width: 10.25rem;
+        padding: 0.3125rem 0.625rem;
+        font-size: 0.875rem;
+        background-color: #005fa3;
+        color: #fff;
+        border: none;
+        border-radius: 0.3125rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0056b3;
         }
       }
     }
-  
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 20px;
-    }
   }
-  
+
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+}
