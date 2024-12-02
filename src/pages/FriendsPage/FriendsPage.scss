@@ -1,7 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/typography" as *;
+
+
 .friends-page {
-    padding: 20px;
-    max-width: 600px;
+    padding: 1rem;
+    font-family: "Montserrat";
     margin: 0 auto;
+    @include tablet {
+      padding: 1.5rem;
+    }
+    @include desktop {
+      padding: 2.25rem 8.75rem;
+    }
   
     h2 {
       text-align: center;
@@ -16,10 +28,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
-        margin-bottom: 10px;
-        background: #f9f9f9;
-        border-radius: 5px;
+        border-top: 1px solid $color-shadow;
+        padding-top: 1rem;
   
         .friend-username {
           font-size: 16px;
@@ -27,9 +37,10 @@
         }
   
         .message-button {
+          width: 164px;
           padding: 5px 10px;
           font-size: 14px;
-          background-color: #007bff;
+          background-color: #005fa3;
           color: #fff;
           border: none;
           border-radius: 5px;
@@ -38,6 +49,7 @@
           &:hover {
             background-color: #0056b3;
           }
+          
         }
       }
     }

@@ -5,8 +5,9 @@
 
 .post-actions {
     display: flex;
-    gap: 10px;
-  
+    justify-content: flex-end;
+    border-bottom: 1px solid $color-shadow;
+  padding: 16px 0;
     &__buttons {
       display: flex;
       gap: 5px;

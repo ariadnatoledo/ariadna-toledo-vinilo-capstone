@@ -85,20 +85,31 @@ function ProfilePage({ user }) {
       {user.userId && (
         <>
           <div className="profile-page__header">
-            <img
-              className="profile-page__avatar"
-              src={`http://localhost:3306${user.avatar}`}
-              alt={user.username}
-            />
-            <div className="profile-page__info">
-              <div className="profile-page__username">
-                <h2>{user.username}</h2>
-              </div>
-              <div className="profile-page__bio">
-                <p>{user.bio}</p>
-              </div>
-            </div>
-          </div>
+  <img
+    className="profile-page__avatar"
+    src={`http://localhost:3306${user.avatar}`}
+    alt={user.username}
+  />
+  <div className="profile-page__info">
+    <div className="profile-page__username-stats">
+      <h2 className="profile-page__username">{user.username}</h2>
+      <div className="profile-page__follow-stats">
+        <div className="profile-page__follow-count">
+          <p>{user.followers || 1}</p>
+          <span>Followers</span>
+        </div>
+        <div className="profile-page__follow-count">
+          <p>{user.following || 1}</p>
+          <span>Following</span>
+        </div>
+      </div>
+    </div>
+    <div className="profile-page__bio">
+      <p>{user.bio}</p>
+    </div>
+  </div>
+</div>
+
 
           <div className="profile-page__upload">
             <img
@@ -117,7 +128,10 @@ function ProfilePage({ user }) {
               ></div>
               <div className="profile-page__modal-content">
                 <h3>Upload a Photo</h3>
-                <form className="profile-page__form" onSubmit={handleSubmitPost}>
+                <form
+                  className="profile-page__form"
+                  onSubmit={handleSubmitPost}
+                >
                   <div className="profile-page__form-group">
                     <label
                       htmlFor="file"
@@ -163,7 +177,7 @@ function ProfilePage({ user }) {
             </div>
           )}
 
-          <ul className="profile-page__posts">
+          <div className="profile-page__posts">
             {posts.map((post) => (
               <li
                 key={post.postId}
@@ -177,7 +191,7 @@ function ProfilePage({ user }) {
                 />
               </li>
             ))}
-          </ul>
+          </div>
         </>
       )}
     </div>
@@ -185,5 +199,3 @@ function ProfilePage({ user }) {
 }
 
 export default ProfilePage;
-
-

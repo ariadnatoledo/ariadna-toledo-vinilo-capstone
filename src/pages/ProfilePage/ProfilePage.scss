@@ -10,8 +10,7 @@
   &__header {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid $color-blue;
+    border-bottom: 1px solid $color-shadow;
     padding-bottom: 1rem;
     gap: 2rem;
   }
@@ -24,10 +23,64 @@
     margin-right: 20px;
   }
 
+  &__wrapper {
+    display: flex;
+  }
+
   &__username {
     display: flex;
     gap: 2.5rem;
     align-items: center;
+    &-stats {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    
+  }
+
+  &__textarea {
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+    border: 2px solid $color-shadow;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: black;
+    resize: none;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+
+    &:focus {
+      border-color: $color-blue;
+    }
+  }
+
+
+  &__follow-stats {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    .profile-page__follow-count {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $color-blue;
+        margin: 0;
+      }
+
+      span {
+        font-size: 0.875rem;
+        color: $color-shadow;
+      }
+    }
   }
 
   &__info {
@@ -40,41 +93,24 @@
       display: flex;
       font-size: 16px;
       color: $color-shadow;
+      margin-top: 1rem;
     }
   }
 
   &__upload {
     display: flex;
     justify-content: center;
-    margin: 2rem 0;
+    margin: 0.875rem 0;
 
     &-icon {
-      width: 60px;
-      height: 60px;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
       transition: transform 0.3s ease;
 
       &:hover {
         transform: scale(1.1);
       }
-    }
-  }
-
-  &__textarea {
-    width: 100%;
-    height: 100px;
-    padding: 1rem;
-    border: 2px solid $color-blue;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: $color-blue;
-    resize: none;
-    font-family: "Montserrat", sans-serif;
-    outline: none;
-
-
-    &:focus {
-      border-color: $color-shadow;
     }
   }
 
@@ -190,53 +226,54 @@
       }
     }
   }
-
-  &__posts {
-    list-style: none;
-    padding: 0;
-
-    &__post-item {
-      background-color: $color-white;
-      border: 1px solid $color-muted-green;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-
-      &:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  
+    &__posts {
+      display: ruby; 
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; 
+      list-style: none;
+      padding: 0;
+  
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
       }
-
-      h4 {
-        font-size: 18px;
-        color: $color-red-orange;
-        margin-bottom: 0.5rem;
+  
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(1, 1fr); 
       }
-
-      .profile-page__post-image {
-        width: 100%;
-        height: auto;
+  
+      &__post-item {
+        background-color: $color-white;
         border-radius: 8px;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        font-size: 16px;
-        color: $color-shadow;
+        padding: 1rem;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+  
+        &:hover {
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+  
+        img.profile-page__post-image {
+          width: 100%; 
+          height: auto;
+          border-radius: 8px;
+        }
       }
     }
   }
-}
-
-img {
-  width: 30%;
-}
+  
 
 @include tablet {
   .profile-page {
     padding: 1.5rem 1.5rem;
+  
+      &__username-stats {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: flex-start;
+        }
+    }
   }
-}
 
 @include desktop {
   .profile-page {
@@ -254,3 +291,8 @@ img {
     opacity: 1;
   }
 }
+
+img {
+  width: 30%;
+}
+

@@ -81,43 +81,48 @@ function CommentsSection({ postId, userId }) {
 
   return (
     <div className="comments-section">
-      <h3>Comments</h3>
-      <ul className="comments-list">
-        {comments.map((comment) => (
-          <li key={comment.commentId} className="comment-item">
-            <img
-              src={`http://localhost:3306${comment.avatar}`}
-              alt={comment.username || "User Avatar"}
-              className="comment-avatar"
-            />
+    <h3>Comments</h3>
+    <ul className="comments-list">
+      {comments.map((comment) => (
+        <li key={comment.commentId} className="comment-item">
+          <img
+            src={`http://localhost:3306${comment.avatar}`}
+            alt={comment.username || "User Avatar"}
+            className="comment-avatar"
+          />
+          <div className="comment-content__section">
             <div className="comment-content">
-              <p>{comment.content}</p>
-              <p>{new Date(comment.timestamp).toLocaleDateString("en-US")}</p>
-              <button
-                className="delete-comment-btn"
-                onClick={() => confirmDeleteComment(comment.commentId)}
-              >
-                <img src={deleteIcon} alt="Delete Comment" />
-              </button>
+              <span className="comment-text">{comment.content}</span>
+              <span className="comment-timestamp">
+                {new Date(comment.timestamp).toLocaleDateString("en-US")}
+              </span>
             </div>
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={handleCommentSubmit} className="comment-form">
-        <textarea
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment..."
-          required
-        />
-        <button type="submit">Post Comment</button>
-      </form>
-      <ConfirmationModal
-        isOpen={isModalOpen}
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
+            <button
+              className="delete-comment-btn"
+              onClick={() => confirmDeleteComment(comment.commentId)}
+            >
+              <img src={deleteIcon} alt="Delete Comment" />
+            </button>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <form onSubmit={handleCommentSubmit} className="comment-form">
+      <textarea
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
+        placeholder="Add a comment..."
+        required
       />
-    </div>
+      <button type="submit">Post Comment</button>
+    </form>
+    <ConfirmationModal
+      isOpen={isModalOpen}
+      onConfirm={handleConfirmDelete}
+      onCancel={handleCancelDelete}
+    />
+  </div>
+  
   );
 }
 

@@ -42,13 +42,14 @@ function PostDetails({ details }) {
       </div>
       <div className="post-details__content">
         <p>{post.content}</p>
+        </div>
         <PostActions
           postId={post.postId}
           currentContent={post.content}
           onUpdate={(_, updatedContent) => handlePostUpdate(updatedContent)}
           onDelete={handlePostDelete}
         />
-      </div>
+     
 
       <div className="post-details__comments">
         <ul>
