@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import FileUploader from "../../components/FileUploader/FileUploader";
-import FollowStats from "../../components/FollowStats/FollowStats";
+import uploadIcon from "../../assets/icons/upload-24px.svg";
 import "./ProfilePage.scss";
 
 function ProfilePage({ user }) {
   const [posts, setPosts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [caption, setCaption] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,12 +32,17 @@ function ProfilePage({ user }) {
     }
   }, [user.userId]);
 
-  const handleSubmitPost = async (e, file, content) => {
+  const handleSubmitPost = async (e) => {
     e.preventDefault();
 
+    if (!selectedFile) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
     const formData = new FormData();
-    formData.append("image", file);
-    formData.append("content", content);
+    formData.append("image", selectedFile);
+    formData.append("content", caption);
     formData.append("userId", user.userId);
 
     const token = localStorage.getItem("token");
@@ -57,13 +64,16 @@ function ProfilePage({ user }) {
         {
           postId: response.data.postId,
           userId: user.userId,
-          content,
+          content: caption,
           image: response.data.image,
           createdAt: new Date().toISOString(),
         },
       ]);
 
       alert("Post created successfully!");
+      setIsModalOpen(false);
+      setSelectedFile(null);
+      setCaption("");
     } catch (err) {
       console.error(err.response?.data?.message || "Error creating post");
       alert("Failed to create post");
@@ -83,10 +93,6 @@ function ProfilePage({ user }) {
             <div className="profile-page__info">
               <div className="profile-page__username">
                 <h2>{user.username}</h2>
-             
-              <div className="profile-page__follow-stats">
-                <FollowStats userId={user.userId} />
-              </div>
               </div>
               <div className="profile-page__bio">
                 <p>{user.bio}</p>
@@ -94,12 +100,69 @@ function ProfilePage({ user }) {
             </div>
           </div>
 
-          <div className="profile-page__form">
-            <h3 className="profile-page__form-title">Create a New Post</h3>
-            <FileUploader submit={handleSubmitPost} />
+          <div className="profile-page__upload">
+            <img
+              src={uploadIcon}
+              alt="Upload"
+              className="profile-page__upload-icon"
+              onClick={() => setIsModalOpen(true)}
+            />
           </div>
 
-          <h3 className="profile-page__posts-title">{user.username}'s Posts</h3>
+          {isModalOpen && (
+            <div className="profile-page__modal">
+              <div
+                className="profile-page__modal-backdrop"
+                onClick={() => setIsModalOpen(false)}
+              ></div>
+              <div className="profile-page__modal-content">
+                <h3>Upload a Photo</h3>
+                <form className="profile-page__form" onSubmit={handleSubmitPost}>
+                  <div className="profile-page__form-group">
+                    <label
+                      htmlFor="file"
+                      className="profile-page__upload-label"
+                    >
+                      Choose File
+                    </label>
+                    <input
+                      type="file"
+                      id="file"
+                      className="profile-page__file-input"
+                      onChange={(e) => setSelectedFile(e.target.files[0])}
+                    />
+                    {selectedFile && (
+                      <span className="profile-page__file-name">
+                        {selectedFile.name}
+                      </span>
+                    )}
+                  </div>
+                  <textarea
+                    className="profile-page__textarea"
+                    placeholder="Write a caption..."
+                    value={caption}
+                    onChange={(e) => setCaption(e.target.value)}
+                  />
+                  <div className="profile-page__form-actions">
+                    <button
+                      type="submit"
+                      className="profile-page__upload-button"
+                    >
+                      Upload
+                    </button>
+                    <button
+                      type="button"
+                      className="profile-page__modal-close"
+                      onClick={() => setIsModalOpen(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
           <ul className="profile-page__posts">
             {posts.map((post) => (
               <li
@@ -122,3 +185,5 @@ function ProfilePage({ user }) {
 }
 
 export default ProfilePage;
+
+
