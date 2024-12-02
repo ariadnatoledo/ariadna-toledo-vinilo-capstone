@@ -32,6 +32,9 @@ const VinylOfTheWeek = () => {
 
   return (
     <div className="vinyl-hero">
+      <div className="vinyl-hero__highlights">
+        <h2>New Highlights</h2>
+      </div>
       <div className="vinyl-hero__wrapper">
         {vinyls.map((vinyl, index) => (
           <div key={vinyl.vinylId || index} className="vinyl-hero__card">
@@ -59,6 +62,7 @@ const VinylOfTheWeek = () => {
       </div>
     </div>
   );
+  
 };
 
 export default VinylOfTheWeek;
