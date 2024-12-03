@@ -6,10 +6,10 @@
 .messages-page {
   padding: 1.25rem;
   font-family: "Montserrat";
-  background-color: #fafafa;
-  border: 0.0625rem solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  // background-color: #fafafa;
+  // border: 0.0625rem solid #ddd;
+  // border-radius: 0.5rem;
+  // box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
 
   &__username {
     display: flex;
@@ -96,7 +96,7 @@
   button {
     width: 100%;
     padding: 0.625rem;
-    margin-top: 0.625rem;
+    margin-top: 2rem;
     font-size: 1rem;
     color: white;
     background-color: #005fa3;
