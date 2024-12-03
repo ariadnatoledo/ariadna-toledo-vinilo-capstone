@@ -152,3 +152,40 @@
   }
 }
 
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-top: 0.7rem;
+
+  .dots {
+    display: inline-flex;
+
+    span {
+      width: 0.5rem;
+      height: 0.5rem;
+      margin: 0 0.2rem;
+      background-color: #0077cc;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite ease-in-out;
+    }
+
+    span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1); 
+    }
+    50% {
+      transform: scale(1.5); 
+    }
+  }
+}
+

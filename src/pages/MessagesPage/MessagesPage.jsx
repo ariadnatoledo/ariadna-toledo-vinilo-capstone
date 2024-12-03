@@ -11,6 +11,7 @@ const MessagesPage = ({ loggedInUserId }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [error, setError] = useState(null);
+  const [isTyping, setIsTyping] = useState(false);
 
   const fetchMessages = async () => {
     try {
@@ -71,6 +72,36 @@ const MessagesPage = ({ loggedInUserId }) => {
     }
   };
 
+  const handleTyping = () => {
+    socket.emit("typing", { senderId: loggedInUserId, receiverId: username });
+  };
+
+  const handleStopTyping = () => {
+    socket.emit("stopTyping", {
+      senderId: loggedInUserId,
+      receiverId: username,
+    });
+  };
+
+  useEffect(() => {
+    socket.on("typing", ({ senderId }) => {
+      if (senderId !== loggedInUserId) {
+        setIsTyping(true);
+      }
+    });
+
+    socket.on("stopTyping", ({ senderId }) => {
+      if (senderId !== loggedInUserId) {
+        setIsTyping(false);
+      }
+    });
+
+    return () => {
+      socket.off("typing");
+      socket.off("stopTyping");
+    };
+  }, [loggedInUserId]);
+
   return (
     <div className="messages-page">
       <div className="messages-page__username">
@@ -101,9 +132,24 @@ const MessagesPage = ({ loggedInUserId }) => {
 
       <textarea
         value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
+        onChange={(e) => {
+          setNewMessage(e.target.value);
+          handleTyping();
+        }}
+        onBlur={handleStopTyping}
         placeholder="Message..."
       />
+
+      {isTyping && (
+        <div className="typing-indicator">
+          <div className="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      )}
+
       <button onClick={handleSendMessage}>Send</button>
       {error && <p className="error">{error}</p>}
     </div>
