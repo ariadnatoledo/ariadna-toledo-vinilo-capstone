@@ -110,7 +110,7 @@ function App() {
         <Route path="/shows" element={<ShowsPage />} />
       </Routes>
 
-      {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && <Footer />}
+      {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && !location.pathname.startsWith("/profile") && <Footer />} 
     </div>
   );
 }
