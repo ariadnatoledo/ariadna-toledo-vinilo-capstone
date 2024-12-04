@@ -105,7 +105,7 @@ const MessagesPage = ({ loggedInUserId }) => {
   return (
     <div className="messages-page">
       <div className="messages-page__username">
-        <h2>{username}</h2>
+        <h2>Conversation with {username}</h2>
       </div>
       <ul className="messages-list">
         {messages.map((msg, index) => (
