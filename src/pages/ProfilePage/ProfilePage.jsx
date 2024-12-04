@@ -216,6 +216,7 @@ function ProfilePage({ user }) {
             </div>
           </div>
 
+<div className="profile-page__container">
           <div className="profile-page__posts">
             {posts.map((post) => (
               <li
@@ -230,6 +231,7 @@ function ProfilePage({ user }) {
                 />
               </li>
             ))}
+          </div>
           </div>
         </>
       )}
