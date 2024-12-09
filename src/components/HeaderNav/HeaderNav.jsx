@@ -72,12 +72,12 @@ function HeaderNav({ loggedIn, handleLogout }) {
         <>
           <div className="header-nav__mobile">
             <Link to="/login" className="header-nav__menu-button">
-              Login
+              SIGN IN
             </Link>
           </div>
 
           <nav className="header-nav__links">
-            <Link to="/login">Login</Link>
+            <Link to="/login">SIGN IN</Link>
           </nav>
         </>
       )}

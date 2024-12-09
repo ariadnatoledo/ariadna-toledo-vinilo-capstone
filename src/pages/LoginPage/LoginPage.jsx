@@ -33,6 +33,9 @@ function LoginPage({ handleLogin, error }) {
           Sign In
         </button>
         {error && <p className="error">{error}</p>}
+        <p>
+  Don't have an account? <a href="/register">Sign up here</a>.
+</p>
       </form>
     </div>
   );

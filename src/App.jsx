@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 import PostDetails from "./components/PostDetails/PostDetails";
 import axios from "axios";
 import "./App.scss";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   const [user, setUser] = useState({});
@@ -88,6 +89,32 @@ function App() {
     navigate("/login");
   };
 
+
+/*
+   * Register
+   */
+
+const handleRegister = async (email, username, password) => {
+  try {
+    const response = await axios.post("http://localhost:3306/register", {
+      email,
+      username,
+      password,
+    });
+
+    const { token, user } = response.data;
+    localStorage.setItem("token", token);
+    setLoggedIn(true);
+    setUser(user);
+    setError("");
+    navigate("/");
+  } catch (err) {
+    console.error(err.response?.data?.message || "Error registering");
+    setError("Error registering user");
+  }
+};
+
+
   return (
     <div className="App">
       {location.pathname !== "/login" && (
@@ -105,6 +132,10 @@ function App() {
           path="/login"
           element={<LoginPage handleLogin={handleLogin} error={error} />}
         />
+        <Route
+  path="/register"
+  element={<RegisterPage handleRegister={handleRegister} error={error} />}
+/>
         <Route path="/friends" element={<FriendsPage loggedInUserId={user.userId} />} />
         <Route path="/messages/:username" element={<MessagesPage loggedInUserId={user.userId}  />} />
         <Route path="/shows" element={<ShowsPage />} />
