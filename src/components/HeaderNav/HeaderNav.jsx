@@ -65,7 +65,7 @@ function HeaderNav({ loggedIn, handleLogout }) {
             <Link to="/profile">Profile</Link>
             <Link to="/friends">Friends</Link>
             <Link to="/shows">Shows</Link>
-            <button onClick={handleLogout}>Logout</button>
+            <button className= "header-logout" onClick={handleLogout}>Logout</button>
           </nav>
         </>
       ) : (
