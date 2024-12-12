@@ -16,7 +16,6 @@
     font-size: 2rem;
     color: $color-dark-blue;
     margin-bottom: 2rem;
-    // text-transform: uppercase;
     letter-spacing: 0.125rem;
     text-align: center;
   }
@@ -57,6 +56,7 @@
     &__btn {
       background-color: $color-saltpan;
       padding: 0.8rem;
+      width: 305px; 
       border: none;
       border-radius: 100px;
       font-size: 1rem;
@@ -83,4 +83,62 @@
     text-align: center;
     font-family: "Montserrat";
   }
+}
+
+.form-container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 2px; 
+  margin-top: 1rem; 
+  background: $color-black;
+
+  .form__btn {
+    flex: 1; 
+    max-width: 150px; 
+    text-align: center; 
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; 
+    font-size: 16px;
+  }
+}
+
+.form-container {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 2px; 
+  margin-top: 1rem; 
+  background: $color-black;
+
+  .form__btn-register {
+  flex: 1; 
+  max-width: 150px; 
+  text-align: center; 
+  background-color: $color-black;
+  padding: 0.8rem;
+  width: 305px; 
+  border: 1px solid $color-saltpan;
+  border-radius: 100px;
+  font-size: 1rem;
+  color: $color-saltpan;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: $color-shade-orange;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+a {
+  text-decoration: none;
+  color: inherit; 
+  font-size: 16px;
+}
 }

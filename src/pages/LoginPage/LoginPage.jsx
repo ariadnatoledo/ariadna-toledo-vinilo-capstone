@@ -29,13 +29,15 @@ function LoginPage({ handleLogin, error }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="form__btn" type="submit">
-          Sign In
-        </button>
+        <div className="form-container">
+          <button className="form__btn" type="submit">
+            Sign In
+          </button>
+          <button className="form__btn-register" type="button">
+            <a href="/register">Sign Up</a>
+          </button>
+        </div>
         {error && <p className="error">{error}</p>}
-        <p>
-  Don't have an account? <a href="/register">Sign up here</a>.
-</p>
       </form>
     </div>
   );

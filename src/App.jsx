@@ -117,7 +117,7 @@ const handleRegister = async (email, username, password) => {
 
   return (
     <div className="App">
-      {location.pathname !== "/login" && (
+      {location.pathname !== "/login" && !location.pathname.startsWith("/register") && (
         <HeaderNav loggedIn={loggedIn} handleLogout={handleLogout} />
       )}
       <Routes>
@@ -141,7 +141,7 @@ const handleRegister = async (email, username, password) => {
         <Route path="/shows" element={<ShowsPage />} />
       </Routes>
 
-      {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && !location.pathname.startsWith("/profile") && !location.pathname.startsWith("/friends") && <Footer />} 
+      {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && !location.pathname.startsWith("/profile") && !location.pathname.startsWith("/friends") && !location.pathname.startsWith("/register") && <Footer />} 
     </div>
   );
 }
