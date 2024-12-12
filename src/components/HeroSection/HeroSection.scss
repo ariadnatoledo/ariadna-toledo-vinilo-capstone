@@ -22,7 +22,6 @@
     font-family: "Gupter-regular";
     font-size: 5rem;
     font-weight: bold;
-    margin: 0 0 1rem 0;
     text-shadow: 0.125rem 0.125rem $color-shadow;
   }
 
@@ -48,5 +47,10 @@
 @include desktop {
   .hero-section {
     padding: 2.25rem 8.75rem;
+    &__title {
+      padding-bottom: 24px;
+    }
   }
+
+ 
 }
