@@ -48,19 +48,22 @@
   }
 
   &__textarea {
+    background-color: $color-shade-orange;
     width: 100%;
     height: 100px;
     padding: 1rem;
-    border: 2px solid $color-shadow;
-    border-radius: 8px;
+    border-radius: 20px;
     font-size: 1rem;
-    color: black;
+    color: $color-black;
     resize: none;
     font-family: "Montserrat", sans-serif;
     outline: none;
 
     &:focus {
-      border-color: $color-blue;
+      border-color: $color-lime;
+    }
+    &::placeholder {
+      color: $color-black;
     }
   }
 
@@ -112,6 +115,7 @@
     display: flex;
     justify-content: center;
     margin: 0.875rem 0;
+    
 
     &-button {
       display: flex;
@@ -166,8 +170,8 @@
     }
 
     &-content {
-      background: #fff;
-      border-radius: 10px;
+      background: $color-black;
+      border-radius: 20px;
       padding: 2rem;
       width: 90%;
       max-width: 500px;
@@ -177,7 +181,7 @@
       h3 {
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
-        color: $color-blue;
+        color: $color-saltpan;
         text-align: center;
       }
     }
@@ -193,10 +197,11 @@
 
       .profile-page__upload-label {
         display: inline-block;
-        background-color: $color-blue;
+        background-color: $color-black;
         color: white;
         padding: 0.75rem 1.5rem;
-        border-radius: 5px;
+        border: 1px solid $color-saltpan;
+        border-radius: 100px;
         text-align: center;
         cursor: pointer;
         font-size: 1rem;
@@ -204,7 +209,7 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: $color-shadow;
+          background-color: $color-black;
         }
       }
 
@@ -226,33 +231,34 @@
       margin-top: 1rem;
 
       .profile-page__upload-button {
-        background-color: $color-blue;
-        color: white;
+        background-color: $color-saltpan;
+        color: $color-black;
         width: 40%;
         padding: 0.75rem 1.5rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 100px;
         cursor: pointer;
         font-size: 1rem;
         font-weight: bold;
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: $color-shadow;
+          background-color: $color-shade-orange;
         }
       }
 
       .profile-page__modal-close {
-        background-color: transparent;
-        color: $color-shadow;
+        background-color: $color-black;
+        color: $color-shade-orange;
         padding: 0.75rem 1.5rem;
-        border: none;
+        border: 1px solid $color-shade-orange;
+        border-radius: 100px;
         font-size: 1rem;
         cursor: pointer;
         transition: color 0.3s ease;
 
         &:hover {
-          color: $color-blue;
+          background-color: $color-saltpan;
         }
       }
     }

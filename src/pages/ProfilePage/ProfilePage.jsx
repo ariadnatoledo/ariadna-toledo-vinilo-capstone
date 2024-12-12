@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import UploadModal from "./UploadModal";
 import axios from "axios";
 import uploadIcon from "../../assets/icons/upload-24px.svg";
 import "./ProfilePage.scss";
