@@ -66,28 +66,22 @@ const VinylOfTheWeek = () => {
             <div className="vinyl-hero__info">
               <div className="vinyl-hero__title">
                 <h2>{vinyl.title}</h2>
+                <button
+  className="vinyl-hero__preview-button"
+  onClick={() => handlePreviewClick(vinyl.previewTrack)}
+>
+  <span className="vinyl-hero__play-icon material-symbols-outlined">
+    play_arrow
+  </span>
+</button>
               </div>
               <div className="vinyl-hero__artist">
                 <p>{vinyl.artist}</p>
               </div>
+              </div>
               <div className="vinyl-hero__label">
                 <p>Label: {vinyl.label}</p>
               </div>
-              <div className="vinyl-hero__rating">
-                <small>Rating: {vinyl.averageRating}</small>
-              </div>
-
-              <button
-                className="vinyl-hero__preview-button"
-                onClick={() => handlePreviewClick(vinyl.previewTrack)}
-              >
-                <img
-                  src={playIcon}
-                  alt="Play Track"
-                  className="vinyl-hero__play-icon"
-                />
-              </button>
-            </div>
           </div>
         ))}
       </div>
