@@ -14,29 +14,36 @@ function RegisterPage({ handleRegister, error }) {
 
   return (
     <div className="register-page">
-      {/* <h1>Register</h1> */}
       <form className="form" onSubmit={handleSubmit}>
-        <input className="form__input"
+        <h2>Register</h2>
+        <input
+          className="form__input"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input className="form__input"
+        <input
+          className="form__input"
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input className="form__input"
+        <input
+          className="form__input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="form__btn" type="submit">Register</button>
+        <button className="form__btn" type="submit">
+          Register
+        </button>
         {error && <p className="error">{error}</p>}
-
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </form>
     </div>
   );

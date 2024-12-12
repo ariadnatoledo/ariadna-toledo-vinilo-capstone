@@ -4,15 +4,20 @@
 @use "../../styles/partials/typography" as *;
 
 .register-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(180deg, $color-shade-orange 0%, $color-pink 51%, $color-saltpan 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    $color-shade-orange 0%,
+    $color-pink 51%,
+    $color-saltpan 100%
+  );
+  font-family: "Montserrat";
 
-
-.form {
+  .form {
     background-color: $color-black;
     border: 1px solid $color-saltpan;
     padding: 2.5rem;
@@ -22,7 +27,11 @@
     display: flex;
     flex-direction: column;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-
+    h2 {
+      display: flex;
+      color: $color-saltpan;
+      padding-bottom: 24px;
+    }
     &__input {
       background-color: $color-black;
       // color: $color-black;
@@ -37,25 +46,24 @@
       &:focus {
         border-color: $color-blue;
         background-color: $color-pink;
-
       }
       &::placeholder {
         color: $color-saltpan;
+        font-family: "Montserrat";
       }
-      
     }
 
     &__btn {
       background-color: $color-saltpan;
       padding: 0.8rem;
-      width: 305px; 
+      width: 305px;
       border: none;
       border-radius: 100px;
       font-size: 1rem;
       // font-weight: bold;
       color: $color-black;
       cursor: pointer;
-      // text-transform: uppercase;
+      font-family: "Montserrat";
       transition: background-color 0.3s ease, transform 0.2s ease;
 
       &:hover {
@@ -75,4 +83,15 @@
     text-align: center;
     font-family: "Montserrat";
   }
+}
+
+p {
+  color: $color-saltpan;
+  font-family: "Montserrat";
+  padding-top: 10px;
+}
+
+a {
+  color: $color-shade-orange;
+  text-decoration: underline;
 }
