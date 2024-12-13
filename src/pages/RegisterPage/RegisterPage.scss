@@ -23,7 +23,7 @@
     padding: 2.5rem;
     border-radius: 0.625rem;
     width: 100%;
-    max-width: 25rem;
+    max-width: 24.2rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@
       padding: 0.8rem;
       border: 0.0625rem solid $color-gray;
       border-radius: 15px;
-      font-size: 1rem;
+      font-size: 13px;
       outline: none;
       transition: border-color 0.3s ease, background-color 0.3s ease;
 
@@ -57,9 +57,14 @@
       background-color: $color-saltpan;
       padding: 0.8rem;
       width: 305px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 100px;
-      font-size: 1rem;
+      font-size: 13px;
+      margin-bottom: 13px;
       // font-weight: bold;
       color: $color-black;
       cursor: pointer;
@@ -88,10 +93,14 @@
 p {
   color: $color-saltpan;
   font-family: "Montserrat";
-  padding-top: 10px;
+font-size: 12px;
 }
 
 a {
   color: $color-shade-orange;
   text-decoration: underline;
+}
+
+.form__text {
+  font-size: 1rem;
 }

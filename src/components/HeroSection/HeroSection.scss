@@ -20,7 +20,7 @@
     display: flex;
     justify-content: flex-end;
     font-family: "Gupter-regular";
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
     text-shadow: 0.125rem 0.125rem $color-shadow;
   }
@@ -28,9 +28,8 @@
   &__subtitle {
     display: flex;
     justify-content: flex-end;
-    font-family: "Montserrat";
-    font-size: 1.25rem;
-    padding-top: 24px;
+    font-family: "Montserrat-italic";
+    font-size: 0.8rem;
     margin: 0;
     line-height: 1.5;
     text-shadow: 0.0625rem 0.0625rem $color-shadow;

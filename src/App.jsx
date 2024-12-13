@@ -141,7 +141,7 @@ const handleRegister = async (email, username, password) => {
         <Route path="/shows" element={<ShowsPage />} />
       </Routes>
 
-      {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && !location.pathname.startsWith("/profile") && !location.pathname.startsWith("/friends") && !location.pathname.startsWith("/register") && <Footer />} 
+      {/* {location.pathname !== "/login" && !location.pathname.startsWith("/messages") && !location.pathname.startsWith("/profile") && !location.pathname.startsWith("/friends") && !location.pathname.startsWith("/register") && <Footer />}  */}
     </div>
   );
 }

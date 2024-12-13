@@ -6,7 +6,20 @@
 .messages-page {
   padding: 1rem;
   font-family: "Montserrat";
-  background-color: black;
+  background: linear-gradient(
+    180deg,
+    $color-shade-orange 0%,
+    $color-pink 51%,
+    $color-saltpan 100%
+  );
+  height: 100vh;
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 50px;
+    width: 100%;
+  }
 
   &__username {
     display: flex;
@@ -14,7 +27,7 @@
 
   h2 {
     font-size: 1rem;
-    margin-bottom: 1.25rem;
+    // margin-bottom: 1.25rem;
     text-align: center;
     color: $color-white;
     padding-bottom: 0.625rem;
@@ -35,43 +48,41 @@
       margin-bottom: 0.9375rem;
       padding: 0.9375rem;
       border-radius: 1rem;
-      border: 0.0625rem solid #ddd;
+      // border: 0.0625rem solid #ddd;
       box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
 
-      
-
       &.message-item--sent {
-        align-self: flex-end; 
-        background-color: #e6f7ff;
-        color: #005fa3; 
+        align-self: flex-end;
+        background-color: $color-black;
+        color: $color-saltpan;
       }
 
       &.message-item--received {
         display: flex;
-        align-items: flex-end; 
-        background-color: #3f3f3f;
-        color: white; // Ensure text color is white
+        align-items: flex-end;
+        background-color: $color-saltpan;
+        color: $color-black;
 
         p {
           margin: 0.3125rem 0;
-          color: white; // Ensure paragraphs are also white
-      
-          // & strong {
-          //   color: #ffffff; // Optional: white for strong text too
-          // }
+          color: $color-black;
+          font-weight: bold;
+
+          & strong {
+            color: $color-black;
+          }
         }
       }
 
       &:last-child {
         margin-bottom: 0;
-        
       }
 
       p {
         margin: 0.3125rem 0;
 
         & strong {
-          color: #0077cc;
+          color: $color-saltpan;
         }
       }
 
@@ -88,37 +99,42 @@
     margin-top: 4rem;
     padding: 0.625rem;
     font-size: 0.875rem;
-    border: 0.0625rem solid #ddd;
+    border: 0.0625rem solid $color-saltpan;
     border-radius: 1rem;
-    background-color: #ddd;
+    background-color: $color-saltpan;
     box-shadow: inset 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.1);
     resize: none;
     font-family: "Montserrat";
 
     &:focus {
       outline: none;
-      border-color: #0077cc;
+      border-color: $color-saltpan;
     }
   }
 
   button {
-    width: 100%;
+    width: 10rem;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.625rem;
-    margin-top: 2rem;
-    font-size: 1rem;
-    color: white;
-    background-color: #005fa3;
+    margin-top: 4rem;
+    font-size: 0.875rem;
+    color: $color-saltpan;
+    font-weight: 700;
+    background-color: $color-black;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #004a80;
+      background-color: #292828;
     }
 
     @include tablet {
-      width: 10rem;
+      // width: 20rem;
     }
 
     &:disabled {
@@ -163,17 +179,19 @@
 .typing-indicator {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   margin-top: 0.7rem;
 
   .dots {
+    padding-top: 12px;
     display: inline-flex;
+    align-items: flex-start;
 
     span {
       width: 0.5rem;
       height: 0.5rem;
       margin: 0 0.2rem;
-      background-color: #0077cc;
+      background-color: $color-black;
       border-radius: 50%;
       animation: bounce 1.2s infinite ease-in-out;
     }
@@ -188,23 +206,24 @@
   }
 
   @keyframes bounce {
-    0%, 100% {
-      transform: scale(1); 
+    0%,
+    100% {
+      transform: scale(1);
     }
     50% {
-      transform: scale(1.5); 
+      transform: scale(1.5);
     }
   }
 }
 
 @include tablet {
   .messages-page {
-  padding: 1.5rem;
-}
+    padding: 1.5rem;
+  }
 }
 
 @include desktop {
   .messages-page {
-  padding: 2.25rem 8.75rem;
-}
+    padding: 2.25rem 8.75rem;
+  }
 }

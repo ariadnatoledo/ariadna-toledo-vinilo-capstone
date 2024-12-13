@@ -21,8 +21,8 @@
     padding-top: 0;
   }
   &__avatar {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -40,7 +40,7 @@
     padding-bottom: 1rem;
 
     .profile-page__username {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: bold;
       color: $color-saltpan;
     }
@@ -98,8 +98,9 @@
         font-size: 0.875rem;
         background-color: $color-saltpan;
         color: $color-black;
-        border-radius: 100px;
-        width: 150px;
+        border-radius: 30px;
+        width: 130px;
+        height: 30px;
         cursor: pointer;
         font-family: "Montserrat";
         transition: background-color 0.3s ease;
@@ -125,6 +126,7 @@
   &__container {
     display: flex;
     padding-top: 20px;
+    justify-content: center;
   }
 
   &__posts {
@@ -145,12 +147,12 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
 
-      img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
-      }
+      // img {
+      //   width: 100%;
+      //   height: auto;
+      //   object-fit: cover;
+      //   border-radius: 8px;
+      // }
     }
   }
 
@@ -306,10 +308,7 @@
   }
 }
 
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 2px;
-  object-fit: cover;
+.profile-page__post-image {
+  display: flex;
 }
 

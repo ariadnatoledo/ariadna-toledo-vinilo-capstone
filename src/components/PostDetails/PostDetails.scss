@@ -35,6 +35,7 @@
 
   &__content {
     padding-left: 322px;
+    padding-top: 10px;
     display: flex;
     gap: 145px;
     justify-content: space-between;
@@ -43,7 +44,7 @@
     }
 
     p {
-      font-size: 0.875rem;
+      font-size: 13px;
       color: $color-saltpan; 
     }
   }

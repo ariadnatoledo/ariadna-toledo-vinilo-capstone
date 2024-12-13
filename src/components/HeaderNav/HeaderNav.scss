@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: black;
   font-family: "Montserrat";
 
@@ -91,12 +91,16 @@
       border: none;
       cursor: pointer;
       font-family: "Montserrat";
+      font-size: 13px;
 
       &:hover {
         color: $color-saltpan;
       }
     }
     .header-logout {
+      display: flex;
+      align-items: center;
+      height: 20px;
       background-color: $color-shade-orange;
       border: 1px solid $color-shade-orange;
       color: $color-black; 
@@ -131,12 +135,12 @@
 
 @include tablet {
   .header-nav {
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
   }
 }
 
 @include desktop {
   .header-nav {
-    padding: 2.25rem 8.75rem;
+    padding: 1rem 8.75rem;
   }
 }

@@ -15,7 +15,7 @@ function RegisterPage({ handleRegister, error }) {
   return (
     <div className="register-page">
       <form className="form" onSubmit={handleSubmit}>
-        <h2>Register</h2>
+        <h2 className="form__text">Register</h2>
         <input
           className="form__input"
           type="email"

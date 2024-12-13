@@ -19,13 +19,16 @@ body {
   background-color: $color-black;
 
   &__highlights {
+    display: flex;
     align-self: flex-start;
+    align-items: center;
     font-family: "Montserrat";
     background-color: $color-saltpan;
     font-weight: 500;
     padding: calc(1rem / 1.5);
-    border-radius: 100px;
-    width: 15rem;
+    margin-bottom: 1rem;
+    border-radius: 30px;
+    height: 20px;
   }
 
   &__wrapper {
@@ -60,7 +63,7 @@ body {
     align-items: flex-start;
     text-align: center;
     font-weight: bold;
-    width: 18.75rem;
+    max-width: 15rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     @media (max-width: 48rem) {
@@ -69,11 +72,11 @@ body {
     }
   }
 
-  &__image {
-    width: 100%;
-    height: 300px;
-    border-radius: 0.5rem;
-  }
+  // &__image {
+  //   width: 100%;
+  //   height: 300px;
+  //   border-radius: 0.5rem;
+  // }
 
   &__info {
     display: flex;
@@ -82,10 +85,10 @@ body {
     width: 100%;
     border-bottom: 1px solid $color-saltpan;
 
-    h2, 
-    p { 
-      font-size: 14px;
-      color: $color-saltpan; 
+    h2,
+    p {
+      font-size: 12px;
+      color: $color-saltpan;
       padding-top: 0px;
     }
   }
@@ -98,7 +101,7 @@ body {
     gap: 10px;
 
     h2 {
-      font-size: 16px;
+      font-size: 13px;
       color: $color-saltpan;
     }
 
@@ -135,20 +138,26 @@ body {
 
   &__artist,
   &__label {
-    font-size: 0.9rem; 
+    display: flex;
+    font-size: 0.9rem;
     color: $color-saltpan;
-    margin: 0; 
+    margin: 0;
   }
 }
 
 @include desktop {
   .vinyl-hero {
-    padding: 2.25rem 8.75rem;
+    padding: 0 8.75rem;
 
     &__wrapper {
       border-top: 1px solid $color-saltpan;
-      padding-top: 2rem;
+      padding-top: 1rem;
     }
   }
 }
 
+img {
+  width: 100%;
+  max-width: 15rem;
+  height: auto;
+}

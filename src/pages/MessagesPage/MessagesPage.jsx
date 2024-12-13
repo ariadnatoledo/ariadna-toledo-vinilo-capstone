@@ -130,16 +130,6 @@ const MessagesPage = ({ loggedInUserId }) => {
         ))}
       </ul>
 
-      <textarea
-        value={newMessage}
-        onChange={(e) => {
-          setNewMessage(e.target.value);
-          handleTyping();
-        }}
-        onBlur={handleStopTyping}
-        placeholder="Message..."
-      />
-
       {isTyping && (
         <div className="typing-indicator">
           <div className="dots">
@@ -149,8 +139,30 @@ const MessagesPage = ({ loggedInUserId }) => {
           </div>
         </div>
       )}
+      
+<div className="messages-page__wrapper">
+      <textarea
+        value={newMessage}
+        onChange={(e) => {
+          setNewMessage(e.target.value);
+          handleTyping();
+        }}
+        onBlur={handleStopTyping}
+        placeholder="Type here..."
+      />
 
-      <button onClick={handleSendMessage}>Send</button>
+      {/* {isTyping && (
+        <div className="typing-indicator">
+          <div className="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      )} */}
+
+      <button onClick={handleSendMessage}>Send Message</button>
+      </div>
       {error && <p className="error">{error}</p>}
     </div>
   );
