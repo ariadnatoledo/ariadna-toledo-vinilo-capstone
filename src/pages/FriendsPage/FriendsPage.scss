@@ -4,13 +4,20 @@
 @use "../../styles/partials/typography" as *;
 
 body {
-  background-color: rgb(207, 207, 207);
+  background-color: $color-black;
 }
 .friends-page {
   padding: 1rem;
   font-family: "Montserrat";
   margin: 0 auto;
-  background-color: rgb(207, 207, 207);
+  background-color: $color-black;
+
+  &__title {
+    font-family: "Gupter-regular";
+    font-size: 32px;
+    display: flex;
+    color: $color-saltpan;
+  }
 
   @include tablet {
     padding: 1.5rem;
@@ -23,7 +30,6 @@ body {
   h2 {
     text-align: center;
     margin-bottom: 1.25rem;
-    color: black;
   }
 
   .friends-list {
@@ -34,10 +40,9 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 0.0625rem solid  #747171;
+      border-top: 1px solid $color-saltpan;
       padding-top: 1rem;
-      color: black;
-
+      color: $color-saltpan;
 
       .friend-username {
         font-size: 1rem;
@@ -47,15 +52,16 @@ body {
       .message-button {
         width: 10.25rem;
         padding: 0.3125rem 0.625rem;
-        font-size: 0.875rem;
-        background-color: #005fa3;
-        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: $color-pink;
+        color: $color-black;
         border: none;
-        border-radius: 0.3125rem;
+        border-radius: 100px;
         cursor: pointer;
 
         &:hover {
-          background-color: #0056b3;
+          background-color: #950595;
         }
       }
     }

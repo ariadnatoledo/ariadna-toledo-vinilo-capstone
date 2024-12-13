@@ -29,7 +29,7 @@ const FriendsPage = ({ loggedInUserId }) => {
 
   return (
     <div className="friends-page">
-      <h2>My Friends</h2>
+      <h2 className="friends-page__title">My Friends</h2>
       {error && <p className="error">{error}</p>}
       {friends.length === 0 ? (
         <p>No friends found.</p>
