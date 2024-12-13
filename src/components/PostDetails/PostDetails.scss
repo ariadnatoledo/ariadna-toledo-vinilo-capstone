@@ -6,7 +6,7 @@
 .post-details {
   font-family: "Montserrat";
   padding: 1rem;
-  background-color: rgb(207, 207, 207);
+  background-color: $color-black;
   color: black; 
 
   @include tablet {
@@ -34,13 +34,17 @@
   }
 
   &__content {
+    padding-left: 322px;
+    display: flex;
+    gap: 145px;
+    justify-content: space-between;
+    
     @include desktop {
-      padding: 2.25rem 0;
     }
 
     p {
       font-size: 0.875rem;
-      color: black; 
+      color: $color-saltpan; 
     }
   }
 

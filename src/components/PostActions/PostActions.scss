@@ -12,17 +12,9 @@
   &__buttons {
     display: flex;
     gap: 0.3125rem;
+    width: 180px;
+    height: 30px;
 
-    button {
-      border: none;
-      background: none;
-      cursor: pointer;
-
-      img {
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-    }
   }
 
   &__edit textarea {
@@ -36,3 +28,22 @@
     margin-right: 0.3125rem;
   }
 }
+
+.post-actions {
+  &__edit-btn {
+    background: $color-lime;
+    color: $color-saltpan;
+    border-radius: 100px;
+    // border: 1px solid #FF8E2C;
+    width: 100%; 
+   }
+
+   &__delete-btn {
+    background: $color-shade-orange;
+    color: $color-saltpan;
+    border-radius: 100px;
+    border: 1px solid $color-shade-orange;
+    width: 100%; 
+   }
+}
+

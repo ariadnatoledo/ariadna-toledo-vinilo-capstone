@@ -5,17 +5,30 @@
 
 .comments-section {
   padding: 1rem 0;
+  &__title {
+    color: $color-saltpan;
+    align-self: flex-start;
+    font-family: "Montserrat";
+    background-color: $color-black;
+    font-weight: 500;
+    padding: 0.6666666667rem;
+    border-radius: 100px;
+    border: 1px solid $color-saltpan;
+    width: 15rem;
+  }
 }
+
+
 
 .comments-list {
   list-style-type: none;
   padding: 0;
 
   .comment-item {
-    border-bottom: 1px solid #747171;
+    border-bottom: 1px solid $color-saltpan;
     padding: 1.5rem 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 2rem;
     margin-bottom: 0.3125rem;
 
@@ -36,16 +49,23 @@
         justify-content: space-between;
         align-items: center;
 
+        &__wrapper {
+          display:flex;
+          align-items: center;
+          gap: 25px;
+        }
+
         .comment-text {
           font-size: 0.875rem;
-          color: black; 
+          color: $color-saltpan; 
           margin-right: 0.625rem;
           word-wrap: break-word;
         }
 
         .comment-timestamp {
           font-size: 0.75rem;
-          color: black; 
+          color: $color-saltpan; 
+          font-family: "Montserrat-italic";
         }
       }
 
@@ -78,6 +98,7 @@
 
   textarea {
     width: 100%;
+    height: 100px;
     margin-top: 1.25rem;
     padding: 0.625rem;
     font-size: 0.875rem;
@@ -87,29 +108,36 @@
     box-shadow: inset 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.1);
     resize: none;
     font-family: "Montserrat";
+    background: $color-lime;
+
 
 
     &:focus {
       outline: none;
-      border-color: #0077cc;
+      border-color: $color-saltpan;
+    }
+
+    &::placeholder {
+      color: $color-black;
     }
   }
 
   button {
     align-self: flex-end;
-    padding: 0.3125rem 0.625rem;
     margin: 1rem 0;
     width: 100%;
-    font-size: 1rem;
-    color: white;
-    background-color: $color-dark-blue;
-    border: none;
-    border-radius: 0.5rem;
+    font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: $color-saltpan;
+    font-family: "Montserrat";
+    background-color: #000000;
+    padding: 0.6666666667rem;
+    border-radius: 100px;
+    border: 1px solid #F0FFD7;
 
     &:hover {
-      background: #004080;
+      background: $color-shade-orange;
     }
 
     @include tablet {
@@ -119,5 +147,10 @@
 }
 
 p {
-  color: black;
+  color: $color-saltpan;
+}
+
+.delete-comment-btn img {
+  background: $color-shade-orange;
+  border-radius: 100px;
 }
