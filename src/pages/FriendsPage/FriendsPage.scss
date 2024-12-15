@@ -45,23 +45,29 @@ body {
       color: $color-saltpan;
 
       .friend-username {
-        font-size: 1rem;
+        font-size: 14px;
         font-weight: bold;
       }
 
       .message-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 10.25rem;
+        height: 30px;
         padding: 0.3125rem 0.625rem;
-        font-size: 1rem;
+        font-size: 13px;
         font-weight: 700;
-        background-color: $color-pink;
+        background-color: $color-saltpan;
         color: $color-black;
-        border: none;
+        border: 1px solid $color-black;
         border-radius: 100px;
         cursor: pointer;
 
         &:hover {
-          background-color: #950595;
+          background-color: $color-black;
+          border: 1px solid $color-saltpan;
+          color: $color-saltpan;
         }
       }
     }

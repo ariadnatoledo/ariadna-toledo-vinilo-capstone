@@ -31,19 +31,31 @@
 
 .post-actions {
   &__edit-btn {
-    background: $color-lime;
+    background: $color-black;
     color: $color-saltpan;
     border-radius: 100px;
-    // border: 1px solid #FF8E2C;
+    border: 1px solid $color-saltpan;
     width: 100%; 
-   }
+
+    &:hover {
+      background: $color-saltpan;
+      color: $color-black;
+      border: 1px solid $color-black;
+    }
+  }
 
    &__delete-btn {
-    background: $color-shade-orange;
-    color: $color-saltpan;
+    background: $color-saltpan;
+    color: $color-black;
     border-radius: 100px;
-    border: 1px solid $color-shade-orange;
+    border: 1px solid $color-black;
     width: 100%; 
+
+    &:hover {
+      background: $color-black;
+      color: $color-saltpan;
+      border: 1px solid $color-saltpan;
+    }
    }
 }
 

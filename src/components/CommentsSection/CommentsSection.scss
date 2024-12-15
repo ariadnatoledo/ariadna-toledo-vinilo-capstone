@@ -5,6 +5,7 @@
 
 .comments-section {
   padding: 1rem 0;
+  height: 50vh;
   &__title {
     color: $color-saltpan;
     display: flex;
@@ -136,13 +137,15 @@
     transition: background-color 0.3s ease;
     color: $color-saltpan;
     font-family: "Montserrat";
-    background-color: #000000;
+    background-color: $color-black;
     padding: 0.6666666667rem;
     border-radius: 100px;
     border: 1px solid #f0ffd7;
 
     &:hover {
-      background: $color-shade-orange;
+      background: $color-saltpan;
+      color: $color-black;
+      border: 1px solid $color-black;
     }
 
     @include tablet {

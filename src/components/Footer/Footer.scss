@@ -4,89 +4,12 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-  background: black;
-  color: white;
+  background: $color-black;
+  color: $color-saltpan;
+  border-top: 1px solid $color-saltpan;
   padding: 1rem 1rem;
   font-family: "Montserrat";
 
-  &__content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1.5rem;
-    max-width: 75rem;
-    margin: 0 auto;
-    border-top: 0.0625rem solid black;
-  }
-
-  &__section {
-    flex: 1 1 calc(33.333% - 1rem);
-    min-width: 12.5rem;
-
-    @media (max-width: 48rem) {
-      flex: 1 1 100%;
-      text-align: center;
-    }
-  }
-
-  &__brand {
-    text-align: center;
-
-    & .footer__title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin: 0.5rem 0;
-      padding: 1rem;
-    }
-
-    & .footer__tagline {
-      font-size: 0.875rem;
-      margin: 0.5rem 0 0;
-      font-family: "Montserrat-italic";
-    }
-  }
-
-  &__links,
-  &__social {
-    text-align: left;
-
-    & .footer__subtitle {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    & .footer__list,
-    & .footer__social-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      & li {
-        margin-bottom: 0.5rem;
-
-        & .footer__link,
-        & .footer__social-link {
-          color: white;
-          text-decoration: none;
-          font-size: 0.875rem;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: #004e7c;
-          }
-        }
-      }
-    }
-  }
-
-  &__bottom {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.875rem;
-    border-top: 0.0625rem solid black;
-    padding-top: 1rem;
-  }
-}
 
 @include tablet {
   .footer {
@@ -101,4 +24,5 @@
   .footer {
     padding: 2.25rem 8.75rem;
   }
+}
 }

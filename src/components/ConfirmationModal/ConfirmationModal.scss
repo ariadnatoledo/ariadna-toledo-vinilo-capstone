@@ -37,18 +37,38 @@
       cursor: pointer;
 
       &.confirm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
         background: $color-saltpan;
         color: $color-black;
         border-radius: 100px;
         width: 100%;
+
+        &:hover {
+          background: $color-black;
+          color: $color-saltpan;
+          border: 1px solid $color-saltpan;
+        }
       }
 
       &.cancel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
         background: $color-black;
-        color: $color-shade-orange;
+        color: $color-saltpan;
         border-radius: 100px;
-        border: 1px solid $color-shade-orange;
+        border: 1px solid $color-saltpan;
         width: 100%;
+
+        &:hover {
+          background: $color-saltpan;
+          color: $color-black;
+          border: 1px solid $color-black;
+        }
       }
     }
   }

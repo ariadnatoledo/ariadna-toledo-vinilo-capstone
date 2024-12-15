@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  height: 60vh;
   font-family: "Montserrat";
   background-color: $color-black;
 
@@ -115,7 +116,7 @@ body {
       justify-content: center;
 
       &:hover {
-        background-color: darken($color-black, 10%);
+        // background-color: darken($color-black, 10%);
       }
 
       .vinyl-hero__play-icon {
@@ -129,7 +130,7 @@ body {
         transition: background-color 0.3s ease, transform 0.2s ease;
 
         &:hover {
-          background-color: darken($color-black, 10%);
+          // background-color: darken($color-black, 10%);
           transform: scale(1.1);
         }
       }
@@ -145,9 +146,16 @@ body {
   }
 }
 
+@include tablet {
+  .vinyl-hero {
+    padding: 1.5rem;
+  }
+}
+
+
 @include desktop {
   .vinyl-hero {
-    padding: 0 8.75rem;
+    padding: 1rem 8.75rem;
 
     &__wrapper {
       border-top: 1px solid $color-saltpan;

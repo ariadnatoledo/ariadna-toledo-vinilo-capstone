@@ -3,15 +3,12 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/typography" as *;
 
+
 .messages-page {
   padding: 1rem;
   font-family: "Montserrat";
-  background: linear-gradient(
-    180deg,
-    $color-shade-orange 0%,
-    $color-pink 51%,
-    $color-saltpan 100%
-  );
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+
   height: 100vh;
 
   &__wrapper {
@@ -130,7 +127,9 @@
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #292828;
+      background-color: $color-saltpan;
+      color: $color-black;
+    border: 1px solid $color-black;
     }
 
     @include tablet {
