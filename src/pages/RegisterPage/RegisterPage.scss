@@ -9,12 +9,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    $color-shade-orange 0%,
-    $color-pink 51%,
-    $color-saltpan 100%
-  );
+  background: $color-black;
   font-family: "Montserrat";
 
   .form {
@@ -45,7 +40,8 @@
 
       &:focus {
         border-color: $color-blue;
-        background-color: $color-pink;
+        background-color: $color-black;
+        color: $color-saltpan;
       }
       &::placeholder {
         color: $color-saltpan;
@@ -65,14 +61,15 @@
       border-radius: 100px;
       font-size: 13px;
       margin-bottom: 13px;
-      // font-weight: bold;
       color: $color-black;
       cursor: pointer;
       font-family: "Montserrat";
       transition: background-color 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        background-color: $color-shade-orange;
+        background-color: $color-black;
+        border: 1px solid $color-saltpan;
+        color: $color-saltpan;
       }
 
       &:active {
@@ -93,12 +90,13 @@
 p {
   color: $color-saltpan;
   font-family: "Montserrat";
-font-size: 12px;
+  font-size: 0.875rem;
 }
 
 a {
   color: $color-shade-orange;
   text-decoration: underline;
+  font-size: 0.875rem;
 }
 
 .form__text {

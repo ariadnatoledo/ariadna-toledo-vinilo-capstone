@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(180deg, $color-shade-orange 0%, $color-pink 51%, $color-saltpan 100%);
+  background: $color-black;
   font-family: "Montserrat";
 
 
@@ -45,7 +45,7 @@
 
     &__input {
       background-color: $color-black;
-      // color: $color-black;
+      color: $color-saltpan;
       margin-bottom: 1.5rem;
       padding: 0.8rem;
       border: 0.0625rem solid $color-gray;
@@ -56,7 +56,8 @@
 
       &:focus {
         border-color: $color-blue;
-        background-color: $color-pink;
+        background-color: $color-black;
+        color: $color-saltpan;
 
       }
       &::placeholder {
@@ -85,7 +86,9 @@
       transition: background-color 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        background-color: $color-shade-orange;
+        background-color: $color-black;
+        border: 1px solid $color-saltpan;
+        color: $color-saltpan;
       }
 
       &:active {
@@ -156,7 +159,9 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: $color-shade-orange;
+    background-color: $color-saltpan;
+    border: 1px solid $color-black;
+    color: $color-black;
   }
 
   &:active {
