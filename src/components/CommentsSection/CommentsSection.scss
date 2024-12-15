@@ -5,6 +5,22 @@
 
 .comments-section {
   padding: 1rem 0;
+  height: 50vh;
+  &__title {
+    color: $color-saltpan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    font-family: "Montserrat";
+    background-color: $color-black;
+    font-weight: 500;
+    padding: 0.6666666667rem;
+    border-radius: 100px;
+    border: 1px solid $color-saltpan;
+    width: 10rem;
+    height: 30px;
+  }
 }
 
 .comments-list {
@@ -12,11 +28,11 @@
   padding: 0;
 
   .comment-item {
-    border-bottom: 1px solid #ddd;
-    padding: 0.5rem 0;
+    border-bottom: 1px solid $color-saltpan;
+    padding: 1.5rem 0;
     display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
+    align-items: center;
+    gap: 2rem;
     margin-bottom: 0.3125rem;
 
     .comment-avatar {
@@ -36,16 +52,23 @@
         justify-content: space-between;
         align-items: center;
 
+        &__wrapper {
+          display: flex;
+          align-items: center;
+          gap: 25px;
+        }
+
         .comment-text {
-          font-size: 0.875rem;
-          color: #333;
+          font-size: 13px;
+          color: $color-saltpan;
           margin-right: 0.625rem;
           word-wrap: break-word;
         }
 
         .comment-timestamp {
           font-size: 0.75rem;
-          color: #888;
+          color: $color-saltpan;
+          font-family: "Montserrat-italic";
         }
       }
 
@@ -74,43 +97,68 @@
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  color: black;
 
   textarea {
     width: 100%;
-    height: 6.25rem;
+    height: 70px;
+    margin-top: 1.25rem;
     padding: 0.625rem;
-    font-size: 0.875rem;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    background-color: #fff;
+    font-size: 13px;
+    border: 0.0625rem solid #747171;
+    border-radius: 1rem;
+    background-color: $color-gray;
     box-shadow: inset 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.1);
     resize: none;
+    font-family: "Montserrat";
+    background: $color-saltpan;
 
     &:focus {
       outline: none;
-      border-color: #0077cc;
+      border-color: $color-saltpan;
+    }
+
+    &::placeholder {
+      color: $color-black;
     }
   }
 
   button {
     align-self: flex-end;
-    padding: 0.3125rem 0.625rem;
     margin: 1rem 0;
     width: 100%;
-    font-size: 1rem;
-    color: white;
-    background-color: $color-dark-blue;
-    border: none;
-    border-radius: 0.5rem;
+    max-width: 5rem;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: $color-saltpan;
+    font-family: "Montserrat";
+    background-color: $color-black;
+    padding: 0.6666666667rem;
+    border-radius: 100px;
+    border: 1px solid #f0ffd7;
 
     &:hover {
-      background: #004080;
+      background: $color-saltpan;
+      color: $color-black;
+      border: 1px solid $color-black;
     }
 
     @include tablet {
       width: 10rem;
     }
   }
+}
+
+p {
+  color: $color-saltpan;
+}
+
+.delete-comment-btn img {
+  background: $color-shade-orange;
+  border-radius: 100px;
 }

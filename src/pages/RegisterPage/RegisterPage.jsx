@@ -1,48 +1,52 @@
 import { useState } from "react";
-import "./LoginPage.scss";
+import axios from "axios";
+import "./RegisterPage.scss";
 
-function LoginPage({ handleLogin, error }) {
+function RegisterPage({ handleRegister, error }) {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(email, password);
+    handleRegister(email, username, password);
   };
 
   return (
-    <div className="login-page">
+    <div className="register-page">
       <form className="form" onSubmit={handleSubmit}>
-        <h2 className="form__text">Sign In</h2>
+        <h2 className="form__text">Register</h2>
         <input
           className="form__input"
           type="email"
-          name="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="form__input"
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className="form__input"
           type="password"
-          name="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="form-container">
-          <button className="form__btn" type="submit">
-            Sign In
-          </button>
-          <button className="form__btn-register" type="button">
-            <a href="/register">Sign Up</a>
-          </button>
-        </div>
+        <button className="form__btn" type="submit">
+          Register
+        </button>
         {error && <p className="error">{error}</p>}
-    
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </form>
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

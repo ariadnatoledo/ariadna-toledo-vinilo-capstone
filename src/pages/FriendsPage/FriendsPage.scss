@@ -3,11 +3,21 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/typography" as *;
 
-
+body {
+  background-color: $color-black;
+}
 .friends-page {
   padding: 1rem;
   font-family: "Montserrat";
   margin: 0 auto;
+  background-color: $color-black;
+
+  &__title {
+    font-family: "Gupter-regular";
+    font-size: 32px;
+    display: flex;
+    color: $color-saltpan;
+  }
 
   @include tablet {
     padding: 1.5rem;
@@ -30,26 +40,34 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 0.0625rem solid $color-shadow;
+      border-top: 1px solid $color-saltpan;
       padding-top: 1rem;
+      color: $color-saltpan;
 
       .friend-username {
-        font-size: 1rem;
+        font-size: 14px;
         font-weight: bold;
       }
 
       .message-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 10.25rem;
+        height: 30px;
         padding: 0.3125rem 0.625rem;
-        font-size: 0.875rem;
-        background-color: #005fa3;
-        color: #fff;
-        border: none;
-        border-radius: 0.3125rem;
+        font-size: 13px;
+        font-weight: 700;
+        background-color: $color-saltpan;
+        color: $color-black;
+        border: 1px solid $color-black;
+        border-radius: 100px;
         cursor: pointer;
 
         &:hover {
-          background-color: #0056b3;
+          background-color: $color-black;
+          border: 1px solid $color-saltpan;
+          color: $color-saltpan;
         }
       }
     }

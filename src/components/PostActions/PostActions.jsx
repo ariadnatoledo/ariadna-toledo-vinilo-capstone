@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import "./PostActions.scss"; 
@@ -62,14 +61,14 @@ function PostActions({ postId, currentContent, onUpdate, onDelete }) {
         </div>
       ) : (
         <div className="post-actions__buttons">
-          <button className="post-actions__edit-btn" onClick={() => setIsEditing(true)}>
-            <img src={editIcon} alt="Edit" />
+          <button className="post-actions__edit-btn" onClick={() => setIsEditing(true)}>Edit
+            {/* <img src={editIcon} alt="Edit" /> */}
           </button>
           <button
             className="post-actions__delete-btn"
             onClick={() => setIsModalOpen(true)} 
-          >
-            <img src={deleteIcon} alt="Delete" />
+          >Delete
+            {/* <img src={deleteIcon} alt="Delete" /> */}
           </button>
         </div>
       )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { deleteIcon } from "../PostActions/PostActions"; 
+import deleteIconComments from "../../assets/icons/close-24px.svg"; 
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; 
 import "./CommentsSection.scss";
 
@@ -81,8 +81,8 @@ function CommentsSection({ postId, userId }) {
 
   return (
     <div className="comments-section">
-    <h3>Comments</h3>
-    <ul className="comments-list">
+<h3 className="comments-section__title">Comments</h3>
+<ul className="comments-list">
       {comments.map((comment) => (
         <li key={comment.commentId} className="comment-item">
           <img
@@ -93,16 +93,19 @@ function CommentsSection({ postId, userId }) {
           <div className="comment-content__section">
             <div className="comment-content">
               <span className="comment-text">{comment.content}</span>
+              <div className="comment-content__wrapper">
               <span className="comment-timestamp">
                 {new Date(comment.timestamp).toLocaleDateString("en-US")}
               </span>
-            </div>
+            {/* </div> */}
             <button
               className="delete-comment-btn"
               onClick={() => confirmDeleteComment(comment.commentId)}
             >
-              <img src={deleteIcon} alt="Delete Comment" />
+              <img src={deleteIconComments} alt="Delete Comment" />
             </button>
+            </div>
+            </div>
           </div>
         </li>
       ))}
@@ -114,7 +117,7 @@ function CommentsSection({ postId, userId }) {
         placeholder="Add a comment..."
         required
       />
-      <button type="submit">Post Comment</button>
+      <button type="submit">Post</button>
     </form>
     <ConfirmationModal
       isOpen={isModalOpen}

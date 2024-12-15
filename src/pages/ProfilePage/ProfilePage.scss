@@ -4,49 +4,168 @@
 @use "../../styles/partials/typography" as *;
 
 .profile-page {
+  box-sizing: border-box;
   padding: 1rem 1rem;
-  font-family: "Montserrat";
+  font-family: "Gupter-regular";
+  background-color: $color-black;
 
   &__header {
     display: flex;
-    align-items: center;
-    border-bottom: 1px solid $color-shadow;
-    padding-bottom: 1rem;
-    gap: 2rem;
+    align-items: flex-start;
+    border-bottom: 1px solid $color-saltpan;
+    padding-bottom: 2rem;
+    gap: 8rem;
   }
 
+  &__bio p {
+    padding-top: 0;
+  }
   &__avatar {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 20px;
   }
 
-  &__wrapper {
+  &__info {
     display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
-  &__username {
+  &__username-stats {
     display: flex;
-    gap: 2.5rem;
-    align-items: center;
-    &-stats {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+
+    .profile-page__username {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $color-saltpan;
     }
-    
+
+    .profile-page__follow-stats {
+      display: flex;
+      gap: 2rem;
+      font-family: "Montserrat";
+
+      .profile-page__follow-count {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        
+
+        p {
+          font-size: 14px;
+          font-weight: bold;
+          color: $color-saltpan;
+          margin: 0;
+          padding-top: 0; 
+        }
+
+        span {
+          font-size: 0.875rem;
+          color: $color-saltpan;
+        }
+      }
+    }
+  }
+
+  &__bio-upload {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0; 
+
+    .profile-page__bio {
+      font-size: 1rem;
+      color: $color-saltpan;
+      // flex: 1;
+    }
+
+    .profile-page__upload {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+
+      &-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        background-color: $color-saltpan;
+        color: $color-black;
+        border-radius: 30px;
+        width: 130px;
+        height: 30px;
+        cursor: pointer;
+        font-family: "Montserrat";
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $color-black;
+          color: $color-saltpan;
+          border: 1px solid $color-saltpan;
+        }
+
+        &-icon {
+          width: 24px;
+          height: 24px;
+          filter: invert(100%) brightness(100%);
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+  }
+
+  &__posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+
+    &__post-item {
+      background-color: $color-white;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      // img {
+      //   width: 100%;
+      //   height: auto;
+      //   object-fit: cover;
+      //   border-radius: 8px;
+      // }
+    }
   }
 
   &__textarea {
+    background-color: $color-saltpan;
     width: 100%;
     height: 100px;
-    padding: 1rem;
-    border: 2px solid $color-shadow;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: black;
+    padding: 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: $color-black;
     resize: none;
     font-family: "Montserrat", sans-serif;
     outline: none;
@@ -54,63 +173,9 @@
     &:focus {
       border-color: $color-blue;
     }
-  }
 
-
-  &__follow-stats {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 1rem;
-
-    .profile-page__follow-count {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      p {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: $color-blue;
-        margin: 0;
-      }
-
-      span {
-        font-size: 0.875rem;
-        color: $color-shadow;
-      }
-    }
-  }
-
-  &__info {
-    h2 {
-      font-size: 16px;
-      color: black;
-    }
-
-    .profile-page__bio {
-      display: flex;
-      font-size: 16px;
-      color: $color-shadow;
-      margin-top: 1rem;
-    }
-  }
-
-  &__upload {
-    display: flex;
-    justify-content: center;
-    margin: 0.875rem 0;
-
-    &-icon {
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+    &::placeholder {
+      color: $color-black;
     }
   }
 
@@ -136,19 +201,19 @@
     }
 
     &-content {
-      background: #fff;
-      border-radius: 10px;
+      background: $color-black;
+      border-radius: 20px;
       padding: 2rem;
       width: 90%;
-      max-width: 500px;
+      max-width: 400px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      animation: slideDown 0.3s ease-out;
 
       h3 {
-        font-size: 1.5rem;
+        font-size: 14px;
         margin-bottom: 1.5rem;
-        color: $color-blue;
+        color: $color-saltpan;
         text-align: center;
+        font-family: "Montserrat";
       }
     }
   }
@@ -163,18 +228,20 @@
 
       .profile-page__upload-label {
         display: inline-block;
-        background-color: $color-blue;
+        background-color: $color-black;
         color: white;
         padding: 0.75rem 1.5rem;
-        border-radius: 5px;
+        border: 1px solid $color-saltpan;
+        border-radius: 100px;
         text-align: center;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 13px;
         font-weight: bold;
         transition: background-color 0.3s ease;
+        font-family: "Montserrat";
 
         &:hover {
-          background-color: $color-shadow;
+          background-color: $color-black;
         }
       }
 
@@ -185,8 +252,9 @@
       .profile-page__file-name {
         margin-top: 0.5rem;
         font-size: 0.875rem;
-        color: $color-shadow;
+        color: $color-saltpan;
         text-align: center;
+        font-family: "Montserrat";
       }
     }
 
@@ -196,84 +264,57 @@
       margin-top: 1rem;
 
       .profile-page__upload-button {
-        background-color: $color-blue;
-        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-saltpan;
+        color: $color-black;
+        width: 40%;
+        height: 30px;
         padding: 0.75rem 1.5rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 100px;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 13px;
         font-weight: bold;
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: $color-shadow;
+          background-color: $color-black;
+          border: 1px solid $color-saltpan;
+          color: $color-saltpan;
         }
       }
 
       .profile-page__modal-close {
-        background-color: transparent;
-        color: $color-shadow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-black;
+        color: $color-saltpan;
+        height: 30px;
         padding: 0.75rem 1.5rem;
-        border: none;
-        font-size: 1rem;
+        border: 1px solid $color-saltpan;
+        border-radius: 100px;
+        font-size: 13px;
         cursor: pointer;
         transition: color 0.3s ease;
 
         &:hover {
-          color: $color-blue;
+          background-color: $color-saltpan;
+          border: 1px solid $color-black;
+          color: $color-black;
         }
       }
     }
   }
-  
-    &__posts {
-      display: ruby; 
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem; 
-      list-style: none;
-      padding: 0;
-  
-      @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-  
-      @media (max-width: 480px) {
-        grid-template-columns: repeat(1, 1fr); 
-      }
-  
-      &__post-item {
-        background-color: $color-white;
-        border-radius: 8px;
-        padding: 1rem;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease;
-  
-        &:hover {
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-  
-        img.profile-page__post-image {
-          width: 100%; 
-          height: auto;
-          border-radius: 8px;
-        }
-      }
-    }
-  }
-  
+}
 
 @include tablet {
   .profile-page {
     padding: 1.5rem 1.5rem;
-  
-      &__username-stats {
-          display: flex;
-          gap: 1.5rem;
-          justify-content: flex-start;
-        }
-    }
   }
+}
 
 @include desktop {
   .profile-page {
@@ -281,18 +322,7 @@
   }
 }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-img {
-  width: 30%;
+.profile-page__post-image {
+  display: flex;
 }
 

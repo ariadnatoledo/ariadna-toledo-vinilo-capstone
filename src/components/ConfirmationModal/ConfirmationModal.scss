@@ -16,14 +16,17 @@
   z-index: 1000;
 
   &__content {
-    background: #fff;
+    background: $color-black;
     padding: 1.25rem;
-    border-radius: 0.5rem;
+    border-radius: 20px;
+    border: 1px solid $color-saltpan;
     text-align: center;
     box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.2);
   }
 
   &__actions {
+    display: flex;
+    width: 100%;
     margin-top: 1.25rem;
 
     .confirmation-modal__button {
@@ -34,13 +37,38 @@
       cursor: pointer;
 
       &.confirm {
-        background: $color-dark-blue;
-        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        background: $color-saltpan;
+        color: $color-black;
+        border-radius: 100px;
+        width: 100%;
+
+        &:hover {
+          background: $color-black;
+          color: $color-saltpan;
+          border: 1px solid $color-saltpan;
+        }
       }
 
       &.cancel {
-        background: #ddd;
-        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        background: $color-black;
+        color: $color-saltpan;
+        border-radius: 100px;
+        border: 1px solid $color-saltpan;
+        width: 100%;
+
+        &:hover {
+          background: $color-saltpan;
+          color: $color-black;
+          border: 1px solid $color-black;
+        }
       }
     }
   }

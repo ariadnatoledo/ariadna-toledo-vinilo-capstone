@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import playIcon from "../../assets/icons/play_circle_24px.svg";
 import "./VinylOfTheWeek.scss";
 
 const shuffleArray = (array) => {
@@ -10,6 +11,8 @@ const VinylOfTheWeek = () => {
   const [vinyls, setVinyls] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [previewTrack, setPreviewTrack] = useState(""); 
+  const audioRef = useRef(null); 
 
   useEffect(() => {
     const fetchVinyls = async () => {
@@ -26,6 +29,23 @@ const VinylOfTheWeek = () => {
 
     fetchVinyls();
   }, []);
+
+  const handlePreviewClick = (track) => {
+    if (track === previewTrack) {
+      setPreviewTrack("");
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    } else {
+      
+      setPreviewTrack(track);
+      if (audioRef.current) {
+        audioRef.current.src = `http://localhost:3306${track}`;
+        audioRef.current.play();
+      }
+    }
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -46,23 +66,28 @@ const VinylOfTheWeek = () => {
             <div className="vinyl-hero__info">
               <div className="vinyl-hero__title">
                 <h2>{vinyl.title}</h2>
+                <button
+  className="vinyl-hero__preview-button"
+  onClick={() => handlePreviewClick(vinyl.previewTrack)}
+>
+  <span className="vinyl-hero__play-icon material-symbols-outlined">
+    play_arrow
+  </span>
+</button>
               </div>
               <div className="vinyl-hero__artist">
                 <p>{vinyl.artist}</p>
               </div>
+              </div>
               <div className="vinyl-hero__label">
                 <p>Label: {vinyl.label}</p>
               </div>
-              <div className="vinyl-hero__rating">
-                <small>Rating: {vinyl.averageRating}</small>
-              </div>
-            </div>
           </div>
         ))}
       </div>
+      <audio ref={audioRef} style={{ display: "none" }} />
     </div>
   );
-  
 };
 
 export default VinylOfTheWeek;

@@ -65,19 +65,19 @@ function HeaderNav({ loggedIn, handleLogout }) {
             <Link to="/profile">Profile</Link>
             <Link to="/friends">Friends</Link>
             <Link to="/shows">Shows</Link>
-            <button onClick={handleLogout}>Logout</button>
+            <button className= "header-logout" onClick={handleLogout}>Logout</button>
           </nav>
         </>
       ) : (
         <>
           <div className="header-nav__mobile">
             <Link to="/login" className="header-nav__menu-button">
-              Login
+              SIGN IN
             </Link>
           </div>
 
           <nav className="header-nav__links">
-            <Link to="/login">Login</Link>
+            <Link to="/login">SIGN IN</Link>
           </nav>
         </>
       )}

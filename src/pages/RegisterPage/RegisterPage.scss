@@ -3,7 +3,7 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/typography" as *;
 
-.login-page {
+.register-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,40 +12,24 @@
   background: $color-black;
   font-family: "Montserrat";
 
-
-  h3 {
-    font-size: 2rem;
-    color: $color-dark-blue;
-    margin-bottom: 2rem;
-    letter-spacing: 0.125rem;
-    text-align: center;
-    
-  }
-
-  h2 {
-    display: flex;
-    color: $color-saltpan;
-    padding-bottom: 24px;
-    font-size: 16px;
-    
-  }
-
   .form {
     background-color: $color-black;
     border: 1px solid $color-saltpan;
     padding: 2.5rem;
     border-radius: 0.625rem;
     width: 100%;
-    max-width: 25rem;
+    max-width: 24.2rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-
-  
-
+    h2 {
+      display: flex;
+      color: $color-saltpan;
+      padding-bottom: 24px;
+    }
     &__input {
       background-color: $color-black;
-      color: $color-saltpan;
+      // color: $color-black;
       margin-bottom: 1.5rem;
       padding: 0.8rem;
       border: 0.0625rem solid $color-gray;
@@ -58,28 +42,25 @@
         border-color: $color-blue;
         background-color: $color-black;
         color: $color-saltpan;
-
       }
       &::placeholder {
         color: $color-saltpan;
         font-family: "Montserrat";
-
       }
-      
     }
 
     &__btn {
       background-color: $color-saltpan;
       padding: 0.8rem;
-      width: 305px; 
+      width: 305px;
       height: 30px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 100px;
       font-size: 13px;
-      // font-weight: bold;
+      margin-bottom: 13px;
       color: $color-black;
       cursor: pointer;
       font-family: "Montserrat";
@@ -106,76 +87,18 @@
   }
 }
 
-.form-container {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  gap: 2px; 
-  // margin-top: 1rem; 
-  background: $color-black;
-
-  .form__btn {
-    flex: 1; 
-    max-width: 150px; 
-    text-align: center; 
-    
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit; 
-    font-size: 13px;
-    font-family: "Montserrat";
-
-  }
-
-  
-}
-
-.form-container {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  gap: 2px; 
-  // margin-top: 1rem; 
-  background: $color-black;
-
-  .form__btn-register {
-  flex: 1; 
-  max-width: 150px; 
-  text-align: center; 
-  background-color: $color-black;
-  padding: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 305px; 
-  height: 30px;
-  border: 1px solid $color-saltpan;
-  border-radius: 100px;
-  font-size: 1rem;
+p {
   color: $color-saltpan;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: $color-saltpan;
-    border: 1px solid $color-black;
-    color: $color-black;
-  }
-
-  &:active {
-    transform: scale(0.98);
-  }
+  font-family: "Montserrat";
+  font-size: 0.875rem;
 }
+
 a {
-  text-decoration: none;
-  color: inherit; 
-  font-size: 13px;
-}
+  color: $color-shade-orange;
+  text-decoration: underline;
+  font-size: 0.875rem;
 }
 
-// .form__text h2 {
-//     font-size: 20px;
-  
-// }
+.form__text {
+  font-size: 1rem;
+}
